@@ -8,6 +8,8 @@ abstract class Routes {
   static const ONE = _Paths.ONE;
   static const THREE = _Paths.THREE;
   static const FOUR = _Paths.FOUR;
+  static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
+  static const ONBOARDING = _Paths.ONBOARDING;
 }
 
 abstract class _Paths {
@@ -15,4 +17,6 @@ abstract class _Paths {
   static const ONE = '/one';
   static const THREE = '/three';
   static const FOUR = '/four';
+  static const RESET_PASSWORD = '/reset-password';
+  static const ONBOARDING = '/onboarding';
 }

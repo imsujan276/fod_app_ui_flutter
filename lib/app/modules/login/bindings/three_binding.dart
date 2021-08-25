@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import '../controllers/three_controller.dart';
 
-class ThreeBinding extends Bindings {
+class LoginBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<ThreeController>(

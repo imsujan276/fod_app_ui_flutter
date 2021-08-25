@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/constants.dart';
-import 'package:food_delivery/app/modules/four/views/four_view.dart';
-import 'package:food_delivery/app/modules/three/views/three_view.dart';
+import 'package:food_delivery/app/modules/login/views/three_view.dart';
+import 'package:food_delivery/app/modules/signup/views/four_view.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
 import 'package:food_delivery/app/widgets/custom_paint/custom_paint.dart';
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
@@ -87,7 +87,7 @@ class HomeView extends GetView<HomeController> {
             CustomTextButton(
                 label: 'Login',
                 onPressed: () {
-                  Get.to(() => ThreeView());
+                  Get.to(() => LoginView());
                 }),
             SizedBox(
               height: 15,
@@ -98,7 +98,7 @@ class HomeView extends GetView<HomeController> {
                 label: 'Create an Account',
                 textColor: Theme.of(context).primaryColor,
                 onPressed: () {
-                  Get.to(() => FourView());
+                  Get.to(() => SignupView());
                 })
           ],
         ),

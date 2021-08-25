@@ -110,12 +110,18 @@ class CustomTextButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (icon != Icons.clear) Icon(icon, color: Colors.white),
-              SizedBox(width: 10),
+              if (icon != Icons.clear)
+                Icon(
+                  icon,
+                  color: Colors.white,
+                  size: 18.sp,
+                ),
+              SizedBox(width: 10.sp),
               NormalText(
                 label,
                 color: textColor,
                 isBold: icon != Icons.clear ? false : true,
+                fontSize: icon != Icons.clear ? 16.sp : 18.sp,
               ),
             ],
           )),

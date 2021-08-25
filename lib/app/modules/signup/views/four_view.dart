@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/constants.dart';
-import 'package:food_delivery/app/modules/three/views/three_view.dart';
+import 'package:food_delivery/app/modules/login/views/three_view.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
 import 'package:food_delivery/app/widgets/textFields/custom_textField.dart';
 import 'package:food_delivery/app/widgets/texts/texts.dart';
@@ -9,7 +10,8 @@ import 'package:get/get.dart';
 
 import '../controllers/four_controller.dart';
 
-class FourView extends GetView<FourController> {
+// ScreenUtil
+class SignupView extends GetView<FourController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,14 +31,14 @@ class FourView extends GetView<FourController> {
                 'Sign Up',
               ),
               SizedBox(
-                height: 10,
+                height: 10.h,
               ),
               NormalText('Add you details to sign up'),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               CustomTextField(
-                label: 'Username',
+                label: 'Email or Username',
               ),
               SizedBox(
                 height: 15,
@@ -45,31 +47,31 @@ class FourView extends GetView<FourController> {
                 label: 'Email',
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               CustomTextField(
                 label: 'Mobile No.',
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               CustomTextField(
                 label: 'Address',
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               CustomTextField(
                 label: 'Password',
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               CustomTextField(
                 label: 'Confirm Password',
               ),
               SizedBox(
-                height: 20,
+                height: 40.h,
               ),
               CustomTextButton(
                   label: 'Sign Up',
@@ -88,7 +90,7 @@ class FourView extends GetView<FourController> {
                       children: [
                     WidgetSpan(
                         child: InkWell(
-                      onTap: () => Get.to(() => ThreeView()),
+                      onTap: () => Get.to(() => LoginView()),
                       child: Text(
                         'Login',
                         style: Theme.of(context)
