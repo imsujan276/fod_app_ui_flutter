@@ -32,18 +32,18 @@ class LoginView extends GetView<ThreeController> {
                 height: 10.h,
               ),
               NormalText('Add you details to log in'),
-              SizedBox(height: 30.h),
+              SizedBox(height: 20.h),
               CustomTextField(
                 label: 'Email or Username',
               ),
               SizedBox(
-                height: 30.h,
+                height: 20.h,
               ),
               CustomTextField(
                 label: 'Password',
               ),
               SizedBox(
-                height: 30.h,
+                height: 20.h,
               ),
               CustomTextButton(
                   label: 'Login',
@@ -54,17 +54,17 @@ class LoginView extends GetView<ThreeController> {
               SizedBox(
                 height: 16.h,
               ),
-              InkWell(
+              GestureDetector(
                   onTap: () {
                     Get.to(() => ResetPasswordView());
                   },
                   child: NormalText('Forgot your password')),
               SizedBox(
-                height: 30.h,
+                height: 20.h,
               ),
               NormalText('or Login With'),
               SizedBox(
-                height: 30.h,
+                height: 20.h,
               ),
               CustomTextButton(
                 icon: FontAwesomeIcons.facebookF,
@@ -73,7 +73,7 @@ class LoginView extends GetView<ThreeController> {
                 btnColor: Colors.blue,
               ),
               SizedBox(
-                height: 30.h,
+                height: 20.h,
               ),
               CustomTextButton(
                 icon: FontAwesomeIcons.googlePlusG,
@@ -82,7 +82,7 @@ class LoginView extends GetView<ThreeController> {
                 btnColor: Colors.red,
               ),
               SizedBox(
-                height: 30.h,
+                height: 20.h,
               ),
               RichText(
                   text: TextSpan(

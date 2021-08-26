@@ -15,47 +15,61 @@ class OnboardingView extends GetView<OnboardingController> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: Column(
-        children: [
-          Expanded(
-            flex: 3,
-            child: Obx(
-              () => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+            child: Stack(
+      children: [
+        PageView.builder(
+            controller: controller.pageController,
+            // physics: NeverScrollableScrollPhysics(),
+            onPageChanged: (i) {
+              controller.onChanged(i);
+            },
+            itemCount: splashData.length,
+            itemBuilder: (_, i) {
+              return Column(
                 children: [
-                  Image.asset(
-                      splashData[controller.count.value]["image"].toString()),
                   SizedBox(
-                    height: 40.h,
+                    height: 20.h,
                   ),
-                  DotWidget(selected: controller.count.value),
+                  Flexible(
+                    child: Image.asset(splashData[i]["image"].toString(),
+                        height: 300.h, width: double.infinity),
+                  ),
+                  SizedBox(
+                    height: 60.h,
+                  ),
+                  LargeText(
+                    splashData[i]["title"].toString(),
+                    isCentered: true,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  NormalText(
+                    splashData[i]["text"].toString(),
+                    isCentered: true,
+                  ),
                 ],
+              );
+            }),
+        Container(
+            alignment: Alignment(0.00, 0.0),
+            child: Obx(
+              () => DotWidget(
+                selected: controller.count.value,
               ),
-            ),
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          LargeText(splashData[controller.count.value]["title"].toString()),
-          SizedBox(
-            height: 20.h,
-          ),
-          NormalText(splashData[controller.count.value]["text"].toString()),
-          SizedBox(
-            height: 40.h,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40.sp),
-            child: Obx(() => CustomTextButton(
+            )),
+        Container(
+            alignment: Alignment.bottomCenter,
+            padding: EdgeInsets.symmetric(horizontal: 40.sp, vertical: 20),
+            child: CustomTextButton(
                 label: controller.count.value == 2 ? 'Continue' : 'Next',
                 onPressed: () {
-                  controller.increment();
+                  controller.pageController.nextPage(
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.ease);
                 })),
-          ),
-          SizedBox(height: 20.h),
-        ],
-      ),
-    ));
+      ],
+    )));
   }
 }
 
@@ -66,20 +80,17 @@ class DotWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        for (int i = 0; i < 3; i++)
-          AnimatedContainer(
-            duration: Duration(microseconds: 300),
-            margin: EdgeInsets.symmetric(horizontal: 10.h),
-            height: 10.h,
-            width: 10.h,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: i == selected
-                    ? Theme.of(context).primaryColor
-                    : Colors.grey),
-          ),
-      ],
+      children: List.generate(
+          splashData.length,
+          (index) => Container(
+              margin: const EdgeInsets.all(4),
+              width: 12,
+              height: 12,
+              decoration: BoxDecoration(
+                  color: selected == index
+                      ? Theme.of(context).primaryColor
+                      : Colors.grey,
+                  shape: BoxShape.circle))),
     );
   }
 }

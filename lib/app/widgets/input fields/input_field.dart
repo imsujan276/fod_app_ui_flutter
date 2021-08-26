@@ -1,8 +1,9 @@
  
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
-
+// ScreenUtil
 /// custom text input field widget
 class InputField extends StatefulWidget {
   const InputField({
@@ -57,6 +58,7 @@ class _InputFieldState extends State<InputField> {
   @override
   Widget build(BuildContext context) {
     return (new Container(
+      height: 50.sp,
       margin: new EdgeInsets.only(
         bottom: Constants.defaultPadding,
         top: Constants.defaultPadding,

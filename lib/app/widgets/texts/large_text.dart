@@ -21,9 +21,9 @@ class LargeText extends StatelessWidget {
     return Text(
       text,
       style: Theme.of(context).textTheme.headline3!.copyWith(
-            fontSize: fontSize != null ? fontSize!.sp : null,
+            // fontSize: fontSize != null ? fontSize!.sp : null,
             fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-            color: Colors.grey[700],
+            color: Colors.grey[800],
             decoration: hasUnderline ? TextDecoration.underline : null,
           ),
       textAlign: isCentered ? TextAlign.center : null,

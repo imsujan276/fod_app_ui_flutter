@@ -85,7 +85,7 @@ class CustomTextButton extends StatelessWidget {
   final IconData icon;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onPressed,
       child: Container(
           height: 50.sp,

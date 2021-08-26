@@ -8,6 +8,7 @@ class OnboardingController extends GetxController {
   late PageController pageController;
   @override
   void onInit() {
+    pageController = PageController();
     super.onInit();
   }
 
