@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
+import 'package:food_delivery/app/widgets/responsive_layout.dart';
 import 'package:food_delivery/app/widgets/texts/large_text.dart';
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
 
@@ -15,60 +16,100 @@ class OnboardingView extends GetView<OnboardingController> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-            child: Stack(
-      children: [
-        PageView.builder(
-            controller: controller.pageController,
-            // physics: NeverScrollableScrollPhysics(),
-            onPageChanged: (i) {
-              controller.onChanged(i);
-            },
-            itemCount: splashData.length,
-            itemBuilder: (_, i) {
-              return Column(
-                children: [
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Flexible(
-                    child: Image.asset(splashData[i]["image"].toString(),
-                        height: 300.h, width: double.infinity),
-                  ),
-                  SizedBox(
-                    height: 60.h,
-                  ),
-                  LargeText(
-                    splashData[i]["title"].toString(),
-                    isCentered: true,
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  NormalText(
-                    splashData[i]["text"].toString(),
-                    isCentered: true,
-                  ),
-                ],
-              );
-            }),
-        Container(
-            alignment: Alignment(0.00, 0.0),
-            child: Obx(
-              () => DotWidget(
-                selected: controller.count.value,
-              ),
-            )),
-        Container(
-            alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.symmetric(horizontal: 40.sp, vertical: 20),
-            child: CustomTextButton(
-                label: controller.count.value == 2 ? 'Continue' : 'Next',
-                onPressed: () {
-                  controller.pageController.nextPage(
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.ease);
-                })),
-      ],
+            child: ResponsiveLayout(
+      mobile: Stack(
+        children: [
+          Container(
+            child: PageView.builder(
+                controller: controller.pageController,
+                onPageChanged: (i) {
+                  controller.onChanged(i);
+                },
+                itemCount: splashData.length,
+                itemBuilder: (_, i) {
+                  if (context.isPortrait)
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Image.asset(
+                            splashData[i]["image"].toString(),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 40.h,
+                        ),
+                        LargeText(
+                          splashData[i]["title"].toString(),
+                          isCentered: true,
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        NormalText(
+                          splashData[i]["text"].toString(),
+                          isCentered: true,
+                        ),
+                      ],
+                    );
+                  else
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Image.asset(
+                            splashData[i]["image"].toString(),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 40.h,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            LargeText(
+                              splashData[i]["title"].toString(),
+                              isCentered: true,
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            NormalText(
+                              splashData[i]["text"].toString(),
+                              isCentered: true,
+                            ),
+                          ],
+                        )
+                      ],
+                    );
+                }),
+          ),
+          Container(
+              alignment: Alignment.bottomCenter,
+              margin: EdgeInsets.only(bottom: 90.sp),
+              child: Obx(
+                () => DotWidget(
+                  selected: controller.count.value,
+                ),
+              )),
+          Obx(
+            () => Container(
+                alignment: Alignment.bottomCenter,
+                padding:
+                    EdgeInsets.symmetric(horizontal: 40.sp, vertical: 15.h),
+                child: CustomTextButton(
+                    label: controller.count.value == 2 ? 'Continue' : 'Next',
+                    onPressed: () {
+                      if (controller.count.value == 2)
+                        Get.toNamed('/menupage');
+                      else
+                        controller.pageController.nextPage(
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.ease);
+                    })),
+          ),
+        ],
+      ),
     )));
   }
 }

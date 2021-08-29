@@ -23,36 +23,38 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
         body: SafeArea(
       child: Padding(
         padding: EdgeInsets.all(Constants.defaultPadding.sp * 2),
-        child: Column(
-          children: [
-            LargeText(
-              'Reset Password',
-              // fontSize: 28,
-            ),
-            SizedBox(
-              height: 10.sp,
-            ),
-            NormalText(
-              'Please enter your email to receive a link\n to create a new password via email',
-              isCentered: true,
-              fontSize: 16.sp,
-            ),
-            SizedBox(
-              height: 40.h,
-            ),
-            CustomTextField(
-              label: 'Email ',
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            CustomTextButton(
-                label: 'Send',
-                textColor: Theme.of(context).scaffoldBackgroundColor,
-                onPressed: () {
-                  Get.to(() => OtpVerification());
-                }),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              LargeText(
+                'Reset Password',
+                // fontSize: 28,
+              ),
+              SizedBox(
+                height: 10.sp,
+              ),
+              NormalText(
+                'Please enter your email to receive a link\n to create a new password via email',
+                isCentered: true,
+                fontSize: 16.sp,
+              ),
+              SizedBox(
+                height: 40.h,
+              ),
+              CustomTextField(
+                label: 'Email ',
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              CustomTextButton(
+                  label: 'Send',
+                  textColor: Theme.of(context).scaffoldBackgroundColor,
+                  onPressed: () {
+                    Get.to(() => OtpVerification());
+                  }),
+            ],
+          ),
         ),
       ),
     ));

@@ -7,23 +7,25 @@ class LargeText extends StatelessWidget {
   final bool hasUnderline;
   final String text;
   final bool isCentered;
-
+  final Color color;
   const LargeText(
     this.text, {
     this.fontSize,
     this.isBold = true,
     this.hasUnderline = false,
     this.isCentered = false,
+    this.color = Colors.grey,
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
+      overflow: TextOverflow.ellipsis,
       style: Theme.of(context).textTheme.headline3!.copyWith(
-            // fontSize: fontSize != null ? fontSize!.sp : null,
+            fontSize: fontSize != null ? fontSize!.sp : null,
             fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-            color: Colors.grey[800],
+            color: color,
             decoration: hasUnderline ? TextDecoration.underline : null,
           ),
       textAlign: isCentered ? TextAlign.center : null,

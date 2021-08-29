@@ -106,7 +106,6 @@ class CustomTextButton extends StatelessWidget {
                 Radius.circular(30.0),
               ),
               boxShadow: [BoxShadow(color: borderColor, spreadRadius: 1)]),
-          width: double.infinity,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

@@ -33,7 +33,10 @@ class SignupView extends GetView<FourController> {
               SizedBox(
                 height: 10.h,
               ),
-              NormalText('Add you details to sign up'),
+              NormalText(
+                'Add you details to sign up',
+                fontWeight: FontWeight.w800,
+              ),
               SizedBox(
                 height: 20.h,
               ),

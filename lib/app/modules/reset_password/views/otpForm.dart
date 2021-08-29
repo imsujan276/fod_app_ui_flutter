@@ -49,7 +49,6 @@ class _OtpFormState extends State<OtpForm> {
     return Form(
       child: Column(
         children: [
-          SizedBox(height: 0.2.sh),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -58,8 +57,8 @@ class _OtpFormState extends State<OtpForm> {
                 decoration: BoxDecoration(
                     color: Colors.grey.withOpacity(.2),
                     borderRadius: BorderRadius.circular(10)),
-                width: 70.h,
-                height: 70.h,
+                width: 60.h,
+                height: 60.h,
                 child: TextFormField(
                   autofocus: true,
                   obscureText: true,
@@ -78,8 +77,8 @@ class _OtpFormState extends State<OtpForm> {
                 decoration: BoxDecoration(
                     color: Colors.grey.withOpacity(.2),
                     borderRadius: BorderRadius.circular(10)),
-                width: 70.h,
-                height: 70.h,
+                width: 60.h,
+                height: 60.h,
                 child: TextFormField(
                   focusNode: pin2FocusNode,
                   obscureText: true,
@@ -96,8 +95,8 @@ class _OtpFormState extends State<OtpForm> {
                 decoration: BoxDecoration(
                     color: Colors.grey.withOpacity(.2),
                     borderRadius: BorderRadius.circular(10)),
-                width: 70.h,
-                height: 70.h,
+                width: 60.h,
+                height: 60.h,
                 child: TextFormField(
                   focusNode: pin3FocusNode,
                   obscureText: true,
@@ -114,8 +113,8 @@ class _OtpFormState extends State<OtpForm> {
                 decoration: BoxDecoration(
                     color: Colors.grey.withOpacity(.2),
                     borderRadius: BorderRadius.circular(10)),
-                width: 70.h,
-                height: 70.h,
+                width: 60.h,
+                height: 60.h,
                 child: TextFormField(
                   focusNode: pin4FocusNode,
                   obscureText: true,
@@ -134,19 +133,16 @@ class _OtpFormState extends State<OtpForm> {
               ),
             ],
           ),
-          SizedBox(height: .15.sh),
+          SizedBox(height: 30.h),
           // SizedBox(
           //     height: 40.h,
           //   ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18),
-            child: CustomTextButton(
-                label: 'Next',
-                textColor: Theme.of(context).scaffoldBackgroundColor,
-                onPressed: () {
-                  Get.to(() => NewPassword());
-                }),
-          ),
+          CustomTextButton(
+              label: 'Next',
+              textColor: Theme.of(context).scaffoldBackgroundColor,
+              onPressed: () {
+                Get.to(() => NewPassword());
+              }),
           SizedBox(
             height: 20.h,
           ),

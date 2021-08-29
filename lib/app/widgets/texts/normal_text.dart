@@ -25,7 +25,7 @@ class NormalText extends StatelessWidget {
       text,
       style: Theme.of(context).textTheme.bodyText1!.copyWith(
             fontSize: fontSize != null ? fontSize!.sp : null,
-            // fontWeight: isBold ? FontWeight.bold : fontWeight,
+            fontWeight: isBold ? FontWeight.bold : fontWeight,
             decoration: hasUnderline ? TextDecoration.underline : null,
             color: color,
           ),
