@@ -4,12 +4,20 @@ import 'package:food_delivery/app/modules/home/bindings/home_binding.dart';
 import 'package:food_delivery/app/modules/home/views/home_view.dart';
 import 'package:food_delivery/app/modules/login/bindings/three_binding.dart';
 import 'package:food_delivery/app/modules/login/views/three_view.dart';
+import 'package:food_delivery/app/modules/menu/bindings/menu_binding.dart';
+import 'package:food_delivery/app/modules/menu/views/menu_view.dart';
 import 'package:food_delivery/app/modules/menupage/bindings/menupage_binding.dart';
 import 'package:food_delivery/app/modules/menupage/views/menupage_view.dart';
+import 'package:food_delivery/app/modules/more/bindings/more_binding.dart';
+import 'package:food_delivery/app/modules/more/views/more_view.dart';
+import 'package:food_delivery/app/modules/offers/bindings/offers_binding.dart';
+import 'package:food_delivery/app/modules/offers/views/offers_view.dart';
 import 'package:food_delivery/app/modules/onboarding/bindings/onboarding_binding.dart';
 import 'package:food_delivery/app/modules/onboarding/views/onboarding_view.dart';
 import 'package:food_delivery/app/modules/one/bindings/one_binding.dart';
 import 'package:food_delivery/app/modules/one/views/one_view.dart';
+import 'package:food_delivery/app/modules/profile/bindings/profile_binding.dart';
+import 'package:food_delivery/app/modules/profile/views/profile_view.dart';
 import 'package:food_delivery/app/modules/reset_password/bindings/reset_password_binding.dart';
 import 'package:food_delivery/app/modules/reset_password/views/reset_password_view.dart';
 import 'package:food_delivery/app/modules/signup/bindings/four_binding.dart';
@@ -57,6 +65,26 @@ class AppPages {
       name: _Paths.MENUPAGE,
       page: () => MenupageView(),
       binding: MenupageBinding(),
+    ),
+    GetPage(
+      name: _Paths.MENU,
+      page: () => MenuView(),
+      binding: MenuBinding(),
+    ),
+    GetPage(
+      name: _Paths.OFFERS,
+      page: () => OffersView(),
+      binding: OffersBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => ProfileView(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.MORE,
+      page: () => MoreView(),
+      binding: MoreBinding(),
     ),
   ];
 }

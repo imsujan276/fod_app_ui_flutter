@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:food_delivery/app/data/models/menuItem.dart';
+import 'package:food_delivery/app/modules/menu/views/menu_view.dart';
+import 'package:food_delivery/app/modules/more/views/more_view.dart';
+import 'package:food_delivery/app/modules/offers/views/offers_view.dart';
+import 'package:food_delivery/app/modules/profile/views/profile_view.dart';
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
 
 import 'package:get/get.dart';
@@ -9,31 +12,12 @@ import 'package:get/get.dart';
 import '../controllers/menupage_controller.dart';
 import 'homeWidget.dart';
 
-List<MenuItem> _bottomMenuList = [
-  MenuItem(
-    name: "Menu",
-    icon: Icons.dashboard,
-  ),
-  MenuItem(
-    name: "Offers",
-    icon: Icons.shopping_bag,
-  ),
-  MenuItem(
-    name: "Profile",
-    icon: Icons.person,
-  ),
-  MenuItem(
-    name: "More",
-    icon: Icons.menu_open,
-  ),
-];
-
 List<Widget> _children = [
   HomeWidget(),
-  Container(),
-  Container(),
-  Container(),
-  Container(),
+  MenuView(),
+  OffersView(),
+  ProfileView(),
+  MoreView(),
 ];
 
 class MenupageView extends GetView<MenupageController> {
@@ -41,27 +25,25 @@ class MenupageView extends GetView<MenupageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-       
-      body:  
-          Obx(
-        () => controller.currentIndex != 0
+      body: Obx(
+        () => controller.currentIndex == 5
             ? Container()
             : IndexedStack(
                 index: controller.currentIndex,
                 children: _children,
               ),
       ),
-
       bottomNavigationBar: Obx(
         () => controller.currentIndex == 5
             ? Container()
             : BottomAppBar(
                 color: Colors.white,
                 shape: CircularNotchedRectangle(),
-                notchMargin: 12,
+                notchMargin: 12.sp,
                 child: Container(
-                  height: 50.h,
+                  padding: EdgeInsets.only(top: 10.h),
                   child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Spacer(
                         flex: 1,
@@ -115,7 +97,6 @@ class MenupageView extends GetView<MenupageController> {
                 ),
               ),
       ),
-
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Obx(
         () => FloatingActionButton(
@@ -151,55 +132,25 @@ class NavItem extends StatelessWidget {
   final bool isSelected;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () => ontap(),
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Icon(
-          icon,
-          color: isSelected ? Theme.of(context).primaryColor : Colors.grey,
-        ),
-        CustomHeight(
-          height: 3,
-        ),
-        NormalText(
-          name,
-          fontWeight: FontWeight.w600,
-          color: isSelected ? Theme.of(context).primaryColor : Colors.grey,
-        )
-      ]),
+      child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              color: isSelected ? Theme.of(context).primaryColor : Colors.grey,
+            ),
+            CustomHeight(
+              height: 3,
+            ),
+            NormalText(
+              name,
+              fontWeight: FontWeight.w600,
+              color: isSelected ? Theme.of(context).primaryColor : Colors.grey,
+            )
+          ]),
     );
   }
-}
-
-Widget _bottomAppBar(
-  context,
-) {
-  final menuPageController = Get.find<MenupageController>();
-  return BottomAppBar(
-      color: Colors.grey,
-      shape: CircularNotchedRectangle(),
-      child: BottomNavigationBar(
-        onTap: (i) {
-          print(i);
-          menuPageController.updateCurrentIndex(i);
-        },
-        unselectedLabelStyle: TextStyle(color: Colors.grey),
-        unselectedItemColor: Colors.grey,
-        selectedItemColor: Theme.of(context).primaryColor,
-        items: [
-          ..._bottomMenuList.map((e) => BottomNavigationBarItem(
-                  icon: Icon(
-                    e.icon,
-                  ),
-                  label: e.name)
-              // IconButton(
-              //             icon: Icon(e.icon),
-              //             onPressed: () {},
-              //           )) IconButton(
-              //             icon: Icon(e.icon),
-              //             onPressed: () {},
-              //           ) ).toList()
-              )
-        ],
-      ));
 }

@@ -19,10 +19,11 @@ class SignupView extends GetView<FourController> {
         //   title: Text('FourView'),
         //   centerTitle: true,
         // ),
-        body: SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(Constants.defaultPadding * 2),
+        body: SingleChildScrollView(
+      child: Container(
+        height: 1.sh,
+        padding: EdgeInsets.all(Constants.defaultPadding * 2),
+        child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -74,15 +75,13 @@ class SignupView extends GetView<FourController> {
                 label: 'Confirm Password',
               ),
               SizedBox(
-                height: 40.h,
+                height: 20.h,
               ),
               CustomTextButton(
                   label: 'Sign Up',
                   textColor: Theme.of(context).scaffoldBackgroundColor,
                   onPressed: () {}),
-              SizedBox(
-                height: 16,
-              ),
+              Spacer(),
               RichText(
                   text: TextSpan(
                       text: 'Already have an Account? ',

@@ -19,6 +19,7 @@ class HomeView extends GetView<HomeController> {
         body: ResponsiveLayout(
       mobile: Column(children: [
         Expanded(
+          flex: 1,
           child: Stack(
             fit: StackFit.expand,
             children: [
@@ -49,14 +50,17 @@ class HomeView extends GetView<HomeController> {
               //   ),
               // ),
               // Container(color:Colors.grey[200])   ,
-              Container(
-                  height: 400.h,
-                  width: double.infinity,
-                  child: Image.asset("assets/images/topimage.png",
-                      fit: BoxFit.fill)),
+              if (context.isPortrait)
+                Container(
+                    height: 400.h,
+                    width: double.infinity,
+                    child: Image.asset("assets/images/topimage.png",
+                        fit: BoxFit.fill)),
               Container(
                   height: 50.h,
-                  alignment: Alignment.bottomCenter,
+                  alignment: !context.isPortrait
+                      ? Alignment.center
+                      : Alignment.bottomCenter,
                   child: Image.asset(
                     "assets/images/logo.png",
                   )),
@@ -64,6 +68,7 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
         Expanded(
+          flex: !context.isPortrait ? 2 : 1,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -88,9 +93,7 @@ class HomeView extends GetView<HomeController> {
                       Get.to(() => LoginView());
                     }),
               ),
-              CustomHeight(
-                height: 8,
-              ),
+              CustomHeight(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 18.sp),
                 child: CustomTextButton(
