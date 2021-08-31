@@ -21,8 +21,7 @@ class HomeWidget extends StatelessWidget {
     return ResponsiveLayout(
       mobile: ListView(
         children: [
-          CustomHeight(height: 16),
-          _buildAppBar(),
+          buildAppBar(title: 'Good morning Akila!'),
           CustomHeight(height: 6),
           _buildAddressWidget(context),
           CustomHeight(height: 16),
@@ -184,7 +183,7 @@ class HomeWidget extends StatelessWidget {
                                   shape: BoxShape.circle,
                                   color: Theme.of(context).primaryColor),
                             )),
-                            TextSpan(text: 'Western Food'),
+                            TextSpan(text: 'Western Food  '),
                             // TextSpan(text: '(${122} ratings) '),
                             WidgetSpan(
                               child: Icon(
@@ -248,12 +247,14 @@ class HomeWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 5.h),
-                      NormalText(
-                        categoryData[i].name,
-                        color: Colors.grey[600],
-                        isCentered: true,
-                        isBold: true,
-                        fontSize: 12.sp,
+                      Expanded(
+                        child: NormalText(
+                          categoryData[i].name,
+                          color: Colors.grey[600],
+                          isCentered: true,
+                          isBold: true,
+                          fontSize: 12.sp,
+                        ),
                       ),
                     ]),
               );
@@ -286,29 +287,35 @@ class HomeWidget extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _buildAppBar() {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 16,
-      ),
-      child: Row(
-        children: [
-          LargeText(
-            'Good morning Akila!',
-            color: Colors.grey.shade800,
-          ),
-          Spacer(),
+Widget buildAppBar({String title = '', onPressed = null}) {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 16.sp, vertical: 16.sp),
+    child: Row(
+      children: [
+        if (onPressed != null)
           IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.shopping_cart,
-                color: Colors.grey[700],
-              ))
-        ],
-      ),
-    );
-  }
+            onPressed: onPressed,
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: title == '' ? Colors.white : Colors.grey,
+            ),
+          ),
+        LargeText(
+          title,
+          color: Colors.grey.shade800,
+        ),
+        Spacer(),
+        IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.shopping_cart,
+              color: title == '' ? Colors.white : Colors.grey,
+            ))
+      ],
+    ),
+  );
 }
 
 class TitleWidget extends StatelessWidget {

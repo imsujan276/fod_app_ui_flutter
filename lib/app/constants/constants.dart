@@ -8,8 +8,8 @@ class Constants {
   static const double kTabletBreakpoint = 768.0;
 
   static const double _defaultFontSize = 16;
-  static const double _defaultPadding = 10;
-  static const double _defaultmargin = 10;
+  static const double _defaultPadding = 16;
+  static const double _defaultmargin = 20;
 
   ///default 16
   static double get defaultFontSize => _defaultFontSize.sp;

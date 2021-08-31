@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
                   initialRoute: AppPages.INITIAL,
                   getPages: AppPages.routes,
                   enableLog: true,
+
                   // logWriterCallback: Logger.write,
                   // initialBinding: InitialBinding(),
                   // locale: TranslationService.locale,

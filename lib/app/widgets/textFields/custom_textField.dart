@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery/app/constants/constants.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({Key? key, required this.label, this.prefixIcon})
@@ -9,18 +10,20 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
       // height:ScreenUtil
       alignment: Alignment.center,
-      height: 50.h,
+      height: 50.sp,
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(.2),
         borderRadius: BorderRadius.circular(30),
       ),
       child: TextFormField(
+        style: TextStyle(color: Colors.grey),
         decoration: InputDecoration(
             border: InputBorder.none,
-            prefixIcon: Padding(
-              padding: const EdgeInsets.only(left: 16.0),
+            prefixIcon: Container(
+              margin: EdgeInsets.only(left: 10, right: 10),
               child: Icon(prefixIcon),
             ),
             hintText: label,

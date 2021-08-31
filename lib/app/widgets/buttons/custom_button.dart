@@ -89,6 +89,7 @@ class CustomTextButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
           height: 50.sp,
+          margin: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
           alignment: Alignment.center,
           // padding: EdgeInsets.all(Constants.defaultPadding.sp),
           decoration: BoxDecoration(

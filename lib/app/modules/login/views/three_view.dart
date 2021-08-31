@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_delivery/app/constants/constants.dart';
-import 'package:food_delivery/app/modules/home/views/home_view.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/modules/reset_password/views/reset_password_view.dart';
 import 'package:food_delivery/app/modules/signup/views/four_view.dart';
@@ -85,7 +84,7 @@ class LoginView extends GetView<ThreeController> {
                       children: [
                     WidgetSpan(
                         child: InkWell(
-                      onTap: () => Get.to(() => SignupView()),
+                      onTap: () => Get.off(() => SignupView()),
                       child: Text(
                         'Sign up',
                         style: Theme.of(context)

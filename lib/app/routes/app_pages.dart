@@ -1,5 +1,10 @@
 import 'package:get/get.dart';
 
+import 'package:food_delivery/app/data/models/categoryItem.dart';
+import 'package:food_delivery/app/modules/category/bindings/category_binding.dart';
+import 'package:food_delivery/app/modules/category/views/category_view.dart';
+import 'package:food_delivery/app/modules/detail/bindings/detail_binding.dart';
+import 'package:food_delivery/app/modules/detail/views/detail_view.dart';
 import 'package:food_delivery/app/modules/home/bindings/home_binding.dart';
 import 'package:food_delivery/app/modules/home/views/home_view.dart';
 import 'package:food_delivery/app/modules/login/bindings/three_binding.dart';
@@ -85,6 +90,18 @@ class AppPages {
       name: _Paths.MORE,
       page: () => MoreView(),
       binding: MoreBinding(),
+    ),
+    GetPage(
+      name: _Paths.CATEGORY,
+      page: () => CategoryView(
+        category: categoryData[0].name,
+      ),
+      binding: CategoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL,
+      page: () => DetailView(),
+      binding: DetailBinding(),
     ),
   ];
 }

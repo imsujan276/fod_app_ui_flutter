@@ -15,6 +15,7 @@ class OtpForm extends StatefulWidget {
 }
 
 class _OtpFormState extends State<OtpForm> {
+  late FocusNode pin1FocusNode;
   late FocusNode pin2FocusNode;
   late FocusNode pin3FocusNode;
   late FocusNode pin4FocusNode;
@@ -24,6 +25,7 @@ class _OtpFormState extends State<OtpForm> {
     super.initState();
 
     ///initiating focusNode for formFields
+    pin1FocusNode = FocusNode();
     pin2FocusNode = FocusNode();
     pin3FocusNode = FocusNode();
     pin4FocusNode = FocusNode();
@@ -52,85 +54,78 @@ class _OtpFormState extends State<OtpForm> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                alignment: Alignment(0.00, 0.50),
-                decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(.2),
-                    borderRadius: BorderRadius.circular(10)),
-                width: 60.h,
-                height: 60.h,
-                child: TextFormField(
-                  autofocus: true,
-                  obscureText: true,
-                  obscuringCharacter: '*',
-                  style: otptextStyle,
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(border: InputBorder.none),
-                  onChanged: (value) {
-                    nextField(value, pin2FocusNode);
-                  },
-                ),
-              ),
-              Container(
-                alignment: Alignment(0.00, 0.50),
-                decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(.2),
-                    borderRadius: BorderRadius.circular(10)),
-                width: 60.h,
-                height: 60.h,
-                child: TextFormField(
-                  focusNode: pin2FocusNode,
-                  obscureText: true,
-                  obscuringCharacter: '*',
-                  style: otptextStyle,
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(border: InputBorder.none),
-                  onChanged: (value) => nextField(value, pin3FocusNode),
-                ),
-              ),
-              Container(
-                alignment: Alignment(0.00, 0.50),
-                decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(.2),
-                    borderRadius: BorderRadius.circular(10)),
-                width: 60.h,
-                height: 60.h,
-                child: TextFormField(
-                  focusNode: pin3FocusNode,
-                  obscureText: true,
-                  obscuringCharacter: '*',
-                  style: otptextStyle,
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(border: InputBorder.none),
-                  onChanged: (value) => nextField(value, pin4FocusNode),
-                ),
-              ),
-              Container(
-                alignment: Alignment(0.00, 0.50),
-                decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(.2),
-                    borderRadius: BorderRadius.circular(10)),
-                width: 60.h,
-                height: 60.h,
-                child: TextFormField(
-                  focusNode: pin4FocusNode,
-                  obscureText: true,
-                  obscuringCharacter: '*',
-                  style: otptextStyle,
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(border: InputBorder.none),
-                  onChanged: (value) {
-                    if (value.length == 1) {
-                      pin4FocusNode.unfocus();
-                      // Then you need to check is the code is correct or not
-                    }
-                  },
-                ),
-              ),
+              // Container(
+              //   alignment: Alignment(0.00, 0.50),
+              //   decoration: BoxDecoration(
+              //       color: Colors.grey.withOpacity(.2),
+              //       borderRadius: BorderRadius.circular(10)),
+              //   width: 60.h,
+              //   height: 60.h,
+              //   child: TextFormField(
+              //     autofocus: true,
+              //     obscureText: true,
+              //     obscuringCharacter: '*',
+              //     style: otptextStyle,
+              //     keyboardType: TextInputType.number,
+              //     textAlign: TextAlign.center,
+              //     decoration: InputDecoration(border: InputBorder.none),
+              //     onChanged: (value) {
+              //       nextField(value, pin2FocusNode);
+              //     },
+              //   ),
+              // ),
+              // Container(
+              //   alignment: Alignment(0.00, 0.50),
+              //   decoration: BoxDecoration(
+              //       color: Colors.grey.withOpacity(.2),
+              //       borderRadius: BorderRadius.circular(10)),
+              //   width: 60.h,
+              //   height: 60.h,
+              //   child: TextFormField(
+              //     focusNode: pin2FocusNode,
+              //     obscureText: true,
+              //     obscuringCharacter: '*',
+              //     style: otptextStyle,
+              //     keyboardType: TextInputType.number,
+              //     textAlign: TextAlign.center,
+              //     decoration: InputDecoration(border: InputBorder.none),
+              //     onChanged: (value) => nextField(value, pin3FocusNode),
+              //   ),
+              // ),
+              // Container(
+              //   alignment: Alignment(0.00, 0.50),
+              //   decoration: BoxDecoration(
+              //       color: Colors.grey.withOpacity(.2),
+              //       borderRadius: BorderRadius.circular(10)),
+              //   width: 60.h,
+              //   height: 60.h,
+              //   child: TextFormField(
+              //     focusNode: pin3FocusNode,
+              //     obscureText: true,
+              //     obscuringCharacter: '*',
+              //     style: otptextStyle,
+              //     keyboardType: TextInputType.number,
+              //     textAlign: TextAlign.center,
+              //     decoration: InputDecoration(border: InputBorder.none),
+              //     onChanged: (value) => nextField(value, pin4FocusNode),
+              //   ),
+              // ),
+              PinWidget(
+                  currentFocus: pin1FocusNode,
+                  pin4FocusNode: pin2FocusNode,
+                  otptextStyle: otptextStyle),
+              PinWidget(
+                  currentFocus: pin2FocusNode,
+                  pin4FocusNode: pin3FocusNode,
+                  otptextStyle: otptextStyle),
+              PinWidget(
+                  currentFocus: pin3FocusNode,
+                  pin4FocusNode: pin4FocusNode,
+                  otptextStyle: otptextStyle),
+              PinWidget(
+                  currentFocus: pin4FocusNode,
+                  pin4FocusNode: pin4FocusNode,
+                  otptextStyle: otptextStyle),
             ],
           ),
           SizedBox(height: 30.h),
@@ -167,6 +162,55 @@ class _OtpFormState extends State<OtpForm> {
                 ))
               ]))
         ],
+      ),
+    );
+  }
+}
+
+class PinWidget extends StatelessWidget {
+  const PinWidget({
+    Key? key,
+    required this.pin4FocusNode,
+    required this.otptextStyle,
+    required this.currentFocus,
+  }) : super(key: key);
+  final FocusNode currentFocus;
+  final FocusNode pin4FocusNode;
+  final TextStyle otptextStyle;
+  void nextField(String value, FocusNode focusNode) {
+    if (value.length == 1) {
+      focusNode.requestFocus();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment(0.00, 0.50),
+      decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(.2),
+          borderRadius: BorderRadius.circular(10)),
+      width: 60.h,
+      height: 60.h,
+      child: TextFormField(
+        focusNode: currentFocus,
+        obscureText: true,
+        obscuringCharacter: '*',
+        style: otptextStyle,
+        keyboardType: TextInputType.number,
+        maxLength: 1,
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          counterText: "",
+        ),
+        onChanged: (value) {
+          if (value.length == 1) {
+            nextField(value, pin4FocusNode);
+            if (currentFocus == pin4FocusNode) pin4FocusNode.unfocus();
+            // Then you need to check is the code is correct or not
+          }
+        },
       ),
     );
   }

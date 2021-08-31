@@ -5,6 +5,7 @@ import 'package:food_delivery/app/modules/menu/views/menu_view.dart';
 import 'package:food_delivery/app/modules/more/views/more_view.dart';
 import 'package:food_delivery/app/modules/offers/views/offers_view.dart';
 import 'package:food_delivery/app/modules/profile/views/profile_view.dart';
+import 'package:food_delivery/app/routes/app_pages.dart';
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
 
 import 'package:get/get.dart';
@@ -21,101 +22,129 @@ List<Widget> _children = [
 ];
 
 class MenupageView extends GetView<MenupageController> {
+  final navigatorKey = GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      body: Obx(
-        () => controller.currentIndex == 5
-            ? Container()
-            : IndexedStack(
-                index: controller.currentIndex,
-                children: _children,
-              ),
-      ),
-      bottomNavigationBar: Obx(
-        () => controller.currentIndex == 5
-            ? Container()
-            : BottomAppBar(
-                color: Colors.white,
-                shape: CircularNotchedRectangle(),
-                notchMargin: 12.sp,
-                child: Container(
-                  padding: EdgeInsets.only(top: 10.h),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Spacer(
-                        flex: 1,
-                      ),
-                      NavItem(
-                          icon: Icons.dashboard,
-                          name: 'Menu',
-                          isSelected:
-                              controller.currentIndex == 1 ? true : false,
-                          ontap: () {
-                            controller.updateCurrentIndex(1);
-                          }),
-                      Spacer(
-                        flex: 1,
-                      ),
-                      NavItem(
-                          icon: Icons.shopping_bag,
-                          name: 'Offers',
-                          isSelected:
-                              controller.currentIndex == 2 ? true : false,
-                          ontap: () {
-                            controller.updateCurrentIndex(2);
-                          }),
-                      Spacer(
-                        flex: 4,
-                      ),
-                      NavItem(
-                          icon: Icons.person,
-                          name: 'Profile',
-                          isSelected:
-                              controller.currentIndex == 3 ? true : false,
-                          ontap: () {
-                            controller.updateCurrentIndex(3);
-                          }),
-                      Spacer(
-                        flex: 1,
-                      ),
-                      NavItem(
-                          icon: Icons.menu_open,
-                          name: 'More',
-                          isSelected:
-                              controller.currentIndex == 4 ? true : false,
-                          ontap: () {
-                            controller.updateCurrentIndex(4);
-                          }),
-                      Spacer(
-                        flex: 1,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Obx(
-        () => FloatingActionButton(
-          child: Icon(
-            FontAwesomeIcons.home,
-            color: controller.currentIndex == 0
-                ? Colors.grey.shade200
-                : Colors.grey,
-          ),
-          backgroundColor: controller.currentIndex == 0
-              ? Theme.of(context).primaryColor
-              : Colors.grey.shade200,
-          onPressed: () {
-            controller.updateCurrentIndex(0);
-          },
+      body: Navigator(
+        key: navigatorKey,
+        onGenerateRoute: (route) => MaterialPageRoute(
+          settings: route,
+          builder: (context) => bodyWidet(context)
         ),
       ),
+
+      ///custom bottomnav
+      bottomNavigationBar: bottomNav(),
+
+      ///floating centerdocked
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
+      ///custom floatingbtn
+      floatingActionButton: floatingbtn(context),
     );
   }
+}
+
+Widget bodyWidet(context) {
+  final controller = Get.find<MenupageController>();
+  return Obx(() => controller.currentIndex == 5
+      ? Container()
+      : IndexedStack(
+          index: controller.currentIndex,
+          children: _children,
+        ));
+}
+
+Widget floatingbtn(context) {
+  final controller = Get.find<MenupageController>();
+  return Obx(
+    () => FloatingActionButton(
+      child: Icon(FontAwesomeIcons.home,
+          color: // controller.currentIndex == 0
+              //?
+              Colors.grey.shade200
+          //: Colors.grey,
+          ),
+      backgroundColor: controller.currentIndex == 0
+          ? Theme.of(context).primaryColor
+          : Colors.grey,
+      onPressed: () {
+        controller.updateCurrentIndex(0);
+
+        Get.to(() => Routes.MENUPAGE);
+      },
+    ),
+  );
+}
+
+Widget bottomNav() {
+  final controller = Get.find<MenupageController>();
+  return Obx(
+    () => controller.currentIndex == 5
+        ? Container()
+        : BottomAppBar(
+            color: Colors.white,
+            shape: CircularNotchedRectangle(),
+            notchMargin: 12.sp,
+            child: Container(
+              padding: EdgeInsets.only(top: 10.h),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Spacer(
+                    flex: 1,
+                  ),
+                  NavItem(
+                      icon: Icons.dashboard,
+                      name: 'Menu',
+                      isSelected: controller.currentIndex == 1 ? true : false,
+                      ontap: () {
+                        controller.updateCurrentIndex(1);
+                        Get.toNamed(Routes.MENUPAGE);
+                      }),
+                  Spacer(
+                    flex: 1,
+                  ),
+                  NavItem(
+                      icon: Icons.shopping_bag,
+                      name: 'Offers',
+                      isSelected: controller.currentIndex == 2 ? true : false,
+                      ontap: () {
+                        controller.updateCurrentIndex(2);
+                        Get.toNamed(Routes.MENUPAGE);
+                      }),
+                  Spacer(
+                    flex: 4,
+                  ),
+                  NavItem(
+                      icon: Icons.person,
+                      name: 'Profile',
+                      isSelected: controller.currentIndex == 3 ? true : false,
+                      ontap: () {
+                        controller.updateCurrentIndex(3);
+                        Get.toNamed(Routes.MENUPAGE);
+                      }),
+                  Spacer(
+                    flex: 1,
+                  ),
+                  NavItem(
+                      icon: Icons.menu_open,
+                      name: 'More',
+                      isSelected: controller.currentIndex == 4 ? true : false,
+                      ontap: () {
+                        controller.updateCurrentIndex(4);
+                        Get.toNamed(Routes.MENUPAGE);
+                      }),
+                  Spacer(
+                    flex: 1,
+                  ),
+                ],
+              ),
+            ),
+          ),
+  );
 }
 
 class NavItem extends StatelessWidget {
@@ -133,6 +162,8 @@ class NavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      highlightColor: Colors.white,
+      splashColor: Colors.white,
       onTap: () => ontap(),
       child: Column(
           mainAxisSize: MainAxisSize.min,
