@@ -1,4 +1,8 @@
 class AppImages {
+  static const base = 'assets/images';
+  static const address = base + '/address.png';
+  static const success = base + '/success.png';
+  static const profile = base + '/profile.png';
   static const topImage = 'assets/images/orangetop.png';
   static const meal = '"assets/images/Meal.png"';
   static const logo = '';
@@ -12,4 +16,6 @@ class AppImages {
   static const b = 'assets/images/b.png';
   static const c = 'assets/images/c.png';
   static const d = 'assets/images/d.png';
+  static const jakub = 'assets/images/jakub.png';
+  static const tandori = 'assets/images/tandorichickenpizza.png';
 }

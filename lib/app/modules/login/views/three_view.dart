@@ -24,7 +24,8 @@ class LoginView extends GetView<ThreeController> {
       child: ResponsiveLayout(
         mobile: Container(
           height: 1.sh,
-          padding: EdgeInsets.all(Constants.defaultPadding.sp * 2),
+          padding:
+              EdgeInsets.symmetric(vertical: Constants.defaultPadding.sp * 2),
           child: Column(
             children: [
               CustomHeight(),
@@ -94,7 +95,6 @@ class LoginView extends GetView<ThreeController> {
                       ),
                     ))
                   ])),
-              CustomHeight(),
             ],
           ),
         ),

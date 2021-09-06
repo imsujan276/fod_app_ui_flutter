@@ -14,9 +14,15 @@ abstract class Routes {
   static const MENU = _Paths.MENU;
   static const OFFERS = _Paths.OFFERS;
   static const PROFILE = _Paths.PROFILE;
-  static const MORE = _Paths.MORE;
   static const CATEGORY = _Paths.CATEGORY;
   static const DETAIL = _Paths.DETAIL;
+  static const MORE_OPTIONS = _Paths.MORE_OPTIONS;
+  static const PAYMENTDETAIL = _Paths.PAYMENTDETAIL;
+  static const NOTIFICATION = _Paths.NOTIFICATION;
+  static const ABOUT = _Paths.ABOUT;
+  static const INBOX = _Paths.INBOX;
+  static const CART = _Paths.CART;
+  static const CHECKOUT = _Paths.CHECKOUT;
 }
 
 abstract class _Paths {
@@ -30,7 +36,13 @@ abstract class _Paths {
   static const MENU = '/menu';
   static const OFFERS = '/offers';
   static const PROFILE = '/profile';
-  static const MORE = '/more';
   static const CATEGORY = '/category';
   static const DETAIL = '/detail';
+  static const MORE_OPTIONS = '/more-options';
+  static const PAYMENTDETAIL = '/paymentdetail';
+  static const NOTIFICATION = '/notification';
+  static const ABOUT = '/about';
+  static const INBOX = '/inbox';
+  static const CART = '/cart';
+  static const CHECKOUT = '/checkout';
 }

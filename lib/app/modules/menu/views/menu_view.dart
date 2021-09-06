@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
-import 'package:food_delivery/app/constants/images.dart';
 import 'package:food_delivery/app/data/models/menuItem.dart';
 import 'package:food_delivery/app/modules/category/views/category_view.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
@@ -16,72 +16,84 @@ import '../controllers/menu_controller.dart';
 class MenuView extends GetView<MenuController> {
   @override
   Widget build(BuildContext context) {
-    return ResponsiveLayout(
-      mobile: Container(
-        height: 1.sh,
-        color: Colors.grey[100],
-        child: SafeArea(
-          child: Column(
-            children: [
-              buildAppBar(
-                title: 'Menu',
-              ),
-              CustomHeight(),
-              CustomTextField(
-                label: 'Search food',
-                prefixIcon: Icons.search,
-              ),
-              CustomHeight(
-                height: 30,
-              ),
-              Expanded(
-                child: Container(
-                  height: .6.sh,
-                  child: Stack(
+    return SingleChildScrollView(
+      child: ResponsiveLayout(
+        mobile: Container(
+          height: 1.sh,
+          color: AppColors.GREY50,
+          child: SafeArea(
+            child: Column(
+              children: [
+                buildAppBar(
+                  title: 'Menu',
+                ),
+                CustomTextField(
+                  label: 'Search food',
+                  prefixIcon: Icons.search,
+                ),
+                CustomHeight(),
+                MenuWidgets()
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MenuWidgets extends StatelessWidget {
+  const MenuWidgets({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        height: .6.sh,
+        child: Stack(
+          children: [
+            Positioned(
+              left: 0,
+              child: DesignContainer(),
+            ),
+            Container(
+                // margin:
+                //     EdgeInsets.only(left: 16.sp, bottom: 50.sp, right: 16.sp),
+                alignment: Alignment.centerLeft,
+                child: SingleChildScrollView(
+                  child: Column(
                     children: [
-                      Positioned(
-                        left: 0,
-                        child: DesignContainer(),
-                      ),
-                      Container(
-                          margin: EdgeInsets.only(left: 20.sp),
-                          alignment: Alignment.centerLeft,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ...menuitems.map((e) => MenuItems(menuItem: e)),
-                            ],
-                          )),
-                      // Container(
-                      //   height: 70.h,
-                      //   width: 300.w,
-                      //   color: Colors.grey,
-                      //   child: Center(
-                      //     child: Column(
-                      //       // mainAxisAlignment: MainAxisAlignment.center,
-                      //       // crossAxisAlignment: CrossAxisAlignment.center,
-                      //       children: [
-                      //         Container(
-                      //           decoration: BoxDecoration(
-                      //               color: Colors.white,
-                      //               borderRadius: BorderRadius.only(
-                      //                   topLeft: Radius.circular(30),
-                      //                   bottomLeft: Radius.circular(30),
-                      //                   topRight: Radius.circular(10.sp),
-                      //                   bottomRight: Radius.circular(10.sp))),
-                      //           height: 70.h,
-                      //           width: 300.w,
-                      //         )
-                      //       ],
-                      //     ),
-                      //   ),
-                      // )
+                      ...menuitems.map((e) => MenuItems(menuItem: e)),
                     ],
                   ),
-                ),
-              )
-            ],
-          ),
+                )),
+            // Container(
+            //   height: 70.h,
+            //   width: 300.w,
+            //   color: Colors.grey,
+            //   child: Center(
+            //     child: Column(
+            //       // mainAxisAlignment: MainAxisAlignment.center,
+            //       // crossAxisAlignment: CrossAxisAlignment.center,
+            //       children: [
+            //         Container(
+            //           decoration: BoxDecoration(
+            //               color: Colors.white,
+            //               borderRadius: BorderRadius.only(
+            //                   topLeft: Radius.circular(30),
+            //                   bottomLeft: Radius.circular(30),
+            //                   topRight: Radius.circular(10.sp),
+            //                   bottomRight: Radius.circular(10.sp))),
+            //           height: 70.h,
+            //           width: 300.w,
+            //         )
+            //       ],
+            //     ),
+            //   ),
+            // )
+          ],
         ),
       ),
     );
@@ -110,18 +122,17 @@ class MenuItems extends StatelessWidget {
                     blurRadius: 4, color: Colors.grey.shade300, spreadRadius: 1)
               ],
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  bottomLeft: Radius.circular(30),
+                  topLeft: Radius.circular(20),
+                  bottomLeft: Radius.circular(20),
                   topRight: Radius.circular(10.sp),
                   bottomRight: Radius.circular(10.sp))),
           height: 70.h,
-          width: context.isLandscape ? 0.8.sw : 300.w,
+          width: 0.8.sw, //: 300.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              LargeText(menuItem.name,
-                  fontSize: 18.sp, color: Colors.grey.shade600),
+              LargeText(menuItem.name, fontSize: 18.sp, color: AppColors.GREY),
               CustomHeight(
                 height: 2,
               ),
@@ -131,33 +142,39 @@ class MenuItems extends StatelessWidget {
         ),
         Positioned(
           left: 5.sp,
-          top: 10.sp,
-          child: Image.asset(AppImages.alireza, height: 50.h, width: 50.h),
+          top: 5.sp,
+          child: Image.asset(
+            menuItem.icon,
+            height: 60.h,
+            width: 60.h,
+          ),
         ),
         Positioned(
           right: 0,
           child: InkWell(
             onTap: () {
-              // Get.to(MyApp());
-              Get.to(
-                  CategoryView(
-                    category: menuItem.name,
-                  ),
-                  transition: Transition.noTransition);
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => CategoryView(category: menuItem.name)));
+              // Get.to(
+              //   CategoryView(
+              //     category: menuItem.name,
+              //   ),
+              // );
             },
             child: Container(
               padding: EdgeInsets.symmetric(
                 vertical: 24.sp,
               ),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.WHITE,
                 shape: BoxShape.circle,
                 boxShadow: [
-                  BoxShadow(color: Colors.grey.shade300, spreadRadius: 1)
+                  BoxShadow(
+                      color: AppColors.GREY.withOpacity(.3), spreadRadius: 1)
                 ],
               ),
               child: CircleAvatar(
-                backgroundColor: Colors.white,
+                backgroundColor: AppColors.WHITE,
                 radius: 15.sp,
                 child: Icon(
                   Icons.arrow_forward_ios,
@@ -185,7 +202,7 @@ class DesignContainer extends StatelessWidget {
           topRight: Radius.circular(30.sp),
           bottomRight: Radius.circular(30.sp)),
       child: Container(
-        width: context.isLandscape ? .15.sw : 80.w,
+        width: 80.w,
         height: .6.sh,
         color: Theme.of(context).primaryColor,
       ),

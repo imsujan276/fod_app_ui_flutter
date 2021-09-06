@@ -1,4 +1,4 @@
- 
+import 'package:food_delivery/app/constants/images.dart';
 
 class MenuItem {
   String name;
@@ -8,8 +8,8 @@ class MenuItem {
 }
 
 final List<MenuItem> menuitems = [
-  MenuItem(name: 'Food', icon: '', items: 120),
-  MenuItem(name: 'Beverages', icon: '', items: 120),
-  MenuItem(name: 'Deserts', icon: '', items: 120),
-  MenuItem(name: 'Promotions', icon: '', items: 120),
+  MenuItem(name: 'Food', icon: AppImages.a, items: 120),
+  MenuItem(name: 'Beverages', icon: AppImages.b, items: 120),
+  MenuItem(name: 'Deserts', icon: AppImages.c, items: 120),
+  MenuItem(name: 'Promotions', icon: AppImages.d, items: 120),
 ];

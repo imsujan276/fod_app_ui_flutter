@@ -6,12 +6,15 @@ import 'package:food_delivery/app/data/models/categoryItem.dart';
 import 'package:food_delivery/app/data/models/mostPopular.dart';
 import 'package:food_delivery/app/data/models/popularResturant.dart';
 import 'package:food_delivery/app/data/models/recentItems.dart';
+import 'package:food_delivery/app/modules/cart/views/cart_view.dart';
+import 'package:food_delivery/app/modules/detail/views/detail_view.dart';
 import 'package:food_delivery/app/widgets/responsive_layout.dart';
 import 'package:food_delivery/app/widgets/textFields/custom_textField.dart';
 import 'package:food_delivery/app/widgets/texts/large_text.dart';
 import 'dart:math' as math;
 
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
+import 'package:get/get.dart';
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({Key? key}) : super(key: key);
@@ -37,7 +40,7 @@ class HomeWidget extends StatelessWidget {
           CustomHeight(),
           _categoryWidget(),
           CustomHeight(),
-          _popularResturant(context),
+          popularResturant(context),
           CustomHeight(),
           _mostPopular(context),
           CustomHeight(),
@@ -140,7 +143,7 @@ class HomeWidget extends StatelessWidget {
           height: 15,
         ),
         Container(
-          height: 150.h,
+          height: 180.h,
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: mostPopular.length,
@@ -210,7 +213,7 @@ class HomeWidget extends StatelessWidget {
     );
   }
 
-  Widget _popularResturant(context) {
+  Widget popularResturant(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -253,7 +256,7 @@ class HomeWidget extends StatelessWidget {
                           color: Colors.grey[600],
                           isCentered: true,
                           isBold: true,
-                          fontSize: 12.sp,
+                          fontSize: 16.sp,
                         ),
                       ),
                     ]),
@@ -289,8 +292,9 @@ class HomeWidget extends StatelessWidget {
   }
 }
 
-Widget buildAppBar({String title = '', onPressed = null}) {
-  return Padding(
+Widget buildAppBar(
+    {String title = '', onPressed = null, isBold = true, shoppingicon = true}) {
+  return Container(
     padding: EdgeInsets.symmetric(horizontal: 16.sp, vertical: 16.sp),
     child: Row(
       children: [
@@ -299,20 +303,24 @@ Widget buildAppBar({String title = '', onPressed = null}) {
             onPressed: onPressed,
             icon: Icon(
               Icons.arrow_back_ios,
-              color: title == '' ? Colors.white : Colors.grey,
+              color: title == '' ? Colors.white : Colors.grey.shade600,
             ),
           ),
         LargeText(
           title,
-          color: Colors.grey.shade800,
+          color: Colors.grey.shade600,
+          isBold: isBold,
         ),
         Spacer(),
-        IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.shopping_cart,
-              color: title == '' ? Colors.white : Colors.grey,
-            ))
+        if (shoppingicon)
+          IconButton(
+              onPressed: () {
+                Get.to(() => CartView());
+              },
+              icon: Icon(
+                Icons.shopping_cart,
+                color: title == '' ? Colors.white : Colors.grey,
+              ))
       ],
     ),
   );
@@ -358,67 +366,74 @@ class PopularResturantWidget extends StatelessWidget {
   final PopularResturantModel resturantModel;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CustomHeight(),
-        Container(
-          width: double.infinity,
-          child: Image.asset(
-            resturantModel.image,
-            fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => DetailView()));
+        // Get.to((DetailView()));
+      },
+      child: Column(
+        children: [
+          CustomHeight(),
+          Container(
+            width: double.infinity,
+            child: Image.asset(
+              resturantModel.image,
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.sp, horizontal: 14.sp),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              NormalText(
-                resturantModel.name,
-                fontWeight: FontWeight.w700,
-                color: Colors.grey[700],
-                fontSize: 18,
-              ),
-              // NormalText(
-              //   'Minute by tuk tuk',
-              //   fontWeight: FontWeight.w700,
-              //   color: Colors.grey[700],
-              //   fontSize: 14,
-              // ),
-              CustomHeight(
-                height: 3,
-              ),
-              RichText(
-                  text: TextSpan(
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14.sp,
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.sp, horizontal: 14.sp),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                NormalText(
+                  resturantModel.name,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.grey[700],
+                  fontSize: 16.sp,
+                ),
+                // NormalText(
+                //   'Minute by tuk tuk',
+                //   fontWeight: FontWeight.w700,
+                //   color: Colors.grey[700],
+                //   fontSize: 14,
+                // ),
+                CustomHeight(
+                  height: 3,
+                ),
+                RichText(
+                    text: TextSpan(
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14.sp,
+                        ),
+                        children: [
+                      WidgetSpan(
+                        child: Icon(
+                          Icons.star,
+                          color: Theme.of(context).primaryColor,
+                          size: 16.sp,
+                        ),
                       ),
-                      children: [
-                    WidgetSpan(
-                      child: Icon(
-                        Icons.star,
-                        color: Theme.of(context).primaryColor,
-                        size: 16.sp,
-                      ),
-                    ),
-                    TextSpan(
-                        text: resturantModel.stars.toString(),
-                        style:
-                            TextStyle(color: Theme.of(context).primaryColor)),
-                    TextSpan(text: '(${resturantModel.ratings} ratings) '),
-                    TextSpan(text: 'Cafe'),
-                    WidgetSpan(
-                        child: SizedBox(
-                      width: 20.sp,
-                    )),
-                    TextSpan(text: 'Western Food')
-                  ]))
-            ],
-          ),
-        )
-      ],
+                      TextSpan(
+                          text: resturantModel.stars.toString(),
+                          style:
+                              TextStyle(color: Theme.of(context).primaryColor)),
+                      TextSpan(text: '(${resturantModel.ratings} ratings) '),
+                      TextSpan(text: 'Cafe'),
+                      WidgetSpan(
+                          child: SizedBox(
+                        width: 20.sp,
+                      )),
+                      TextSpan(text: 'Western Food')
+                    ]))
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

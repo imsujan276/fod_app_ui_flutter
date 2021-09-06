@@ -57,12 +57,22 @@ class CustomOutlinedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      child: NormalText(label),
+      child: NormalText(
+        label,
+        color: Theme.of(context).primaryColor,
+      ),
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
         primary: textColor, // foreground
-        side: BorderSide(color: backgroundColor), // background
-        onSurface: AppColors.GREY, // disabled
+        padding: EdgeInsets.symmetric(horizontal: 25.sp, vertical: 10.sp),
+        side: BorderSide(
+          color: AppColors.PRIMARY_COLOR,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+        ),
+        // background
+        onSurface: AppColors.PRIMARY_COLOR, // disabled
       ),
     );
   }
@@ -88,10 +98,10 @@ class CustomTextButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-          height: 50.sp,
+          height: 50.h,
           margin: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
           alignment: Alignment.center,
-          // padding: EdgeInsets.all(Constants.defaultPadding.sp),
+          padding: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
           decoration: BoxDecoration(
               color: btnColor,
               // gradient: LinearGradient(
@@ -108,6 +118,7 @@ class CustomTextButton extends StatelessWidget {
               ),
               boxShadow: [BoxShadow(color: borderColor, spreadRadius: 1)]),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (icon != Icons.clear)

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class MenupageController extends GetxController {
   //TODO: Implement MenupageController
 
-  var _currentIndex = 1.obs;
+  var _currentIndex = 0.obs;
   int get currentIndex => _currentIndex.value;
   @override
   void onInit() {

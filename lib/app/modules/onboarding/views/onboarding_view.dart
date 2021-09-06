@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/constants.dart';
+import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
 import 'package:food_delivery/app/widgets/responsive_layout.dart';
 import 'package:food_delivery/app/widgets/texts/large_text.dart';
@@ -68,6 +69,9 @@ class OnboardingScreens extends StatelessWidget {
                     splashData[i]["text"].toString(),
                     isCentered: true,
                   ),
+                  CustomHeight(
+                    height: 40,
+                  ),
                 ],
               );
 
@@ -124,7 +128,7 @@ class ButtonPart extends StatelessWidget {
               label: controller.count.value == 2 ? 'Continue' : 'Next',
               onPressed: () {
                 if (controller.count.value == 2)
-                  Get.toNamed('/menupage');
+                  Get.offAllNamed('/menupage');
                 else
                   controller.pageController.nextPage(
                       duration: Duration(milliseconds: 300),

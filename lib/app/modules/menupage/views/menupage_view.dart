@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_delivery/app/modules/menu/views/menu_view.dart';
-import 'package:food_delivery/app/modules/more/views/more_view.dart';
+import 'package:food_delivery/app/modules/more_options/views/more_options_view.dart';
 import 'package:food_delivery/app/modules/offers/views/offers_view.dart';
 import 'package:food_delivery/app/modules/profile/views/profile_view.dart';
 import 'package:food_delivery/app/routes/app_pages.dart';
@@ -18,7 +18,7 @@ List<Widget> _children = [
   MenuView(),
   OffersView(),
   ProfileView(),
-  MoreView(),
+  MoreOptionsView(),
 ];
 
 class MenupageView extends GetView<MenupageController> {
@@ -30,9 +30,7 @@ class MenupageView extends GetView<MenupageController> {
       body: Navigator(
         key: navigatorKey,
         onGenerateRoute: (route) => MaterialPageRoute(
-          settings: route,
-          builder: (context) => bodyWidet(context)
-        ),
+            settings: route, builder: (context) => bodyWidet(context)),
       ),
 
       ///custom bottomnav
@@ -61,19 +59,15 @@ Widget floatingbtn(context) {
   final controller = Get.find<MenupageController>();
   return Obx(
     () => FloatingActionButton(
-      child: Icon(FontAwesomeIcons.home,
-          color: // controller.currentIndex == 0
-              //?
-              Colors.grey.shade200
-          //: Colors.grey,
-          ),
+      child: Icon(FontAwesomeIcons.home, color: Colors.grey.shade200),
       backgroundColor: controller.currentIndex == 0
           ? Theme.of(context).primaryColor
           : Colors.grey,
       onPressed: () {
+        Get.back();
         controller.updateCurrentIndex(0);
 
-        Get.to(() => Routes.MENUPAGE);
+        Get.to(MenupageView());
       },
     ),
   );
@@ -101,8 +95,9 @@ Widget bottomNav() {
                       name: 'Menu',
                       isSelected: controller.currentIndex == 1 ? true : false,
                       ontap: () {
+                        Get.back();
                         controller.updateCurrentIndex(1);
-                        Get.toNamed(Routes.MENUPAGE);
+                        Get.to(MenupageView());
                       }),
                   Spacer(
                     flex: 1,
@@ -112,8 +107,9 @@ Widget bottomNav() {
                       name: 'Offers',
                       isSelected: controller.currentIndex == 2 ? true : false,
                       ontap: () {
+                        Get.back();
                         controller.updateCurrentIndex(2);
-                        Get.toNamed(Routes.MENUPAGE);
+                        Get.to(MenupageView());
                       }),
                   Spacer(
                     flex: 4,
@@ -123,8 +119,9 @@ Widget bottomNav() {
                       name: 'Profile',
                       isSelected: controller.currentIndex == 3 ? true : false,
                       ontap: () {
+                        Get.back();
                         controller.updateCurrentIndex(3);
-                        Get.toNamed(Routes.MENUPAGE);
+                        Get.to(MenupageView());
                       }),
                   Spacer(
                     flex: 1,
@@ -134,8 +131,9 @@ Widget bottomNav() {
                       name: 'More',
                       isSelected: controller.currentIndex == 4 ? true : false,
                       ontap: () {
+                        Get.back();
                         controller.updateCurrentIndex(4);
-                        Get.toNamed(Routes.MENUPAGE);
+                        Get.to(MenupageView());
                       }),
                   Spacer(
                     flex: 1,

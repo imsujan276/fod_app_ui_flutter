@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery/app/constants/images.dart';
 import 'package:food_delivery/app/modules/login/views/three_view.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/modules/signup/views/four_view.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
+import 'package:food_delivery/app/widgets/custom_paint/custom_paint.dart';
 import 'package:food_delivery/app/widgets/responsive_layout.dart';
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
 
@@ -24,32 +26,32 @@ class HomeView extends GetView<HomeController> {
             fit: StackFit.expand,
             children: [
               // Container(
-              //   // height: 360.h,
+              //   height: 400.h,
               //   child: CustomPaint(
               //     size: Size(double.infinity, 360.h.toDouble()),
               //     painter: RPSCustomPainter(Color(0xFFBDBDBD)),
               //   ),
               // ),
               // Container(
-              //   height: 340.h,
+              //   height: 400.h,
+              //   width: double.infinity,
               //   child: CustomPaint(
-              //     size: Size(double.infinity, 340.sp.toDouble()),
+              //     size: Size(double.infinity, 400.h.toDouble()),
               //     painter: RPSCustomPainter(Color(0xfffc6011).withOpacity(.2)),
               //     child: Container(
               //       decoration: BoxDecoration(
               //         image: new DecorationImage(
-              //           fit: BoxFit.fill,
-              //           colorFilter: ColorFilter.mode(
-              //               Colors.black.withOpacity(0.8), BlendMode.dstATop),
-              //           image: new AssetImage(
-              //             'assets/images/topimage.png',
-              //           ),
-              //         ),
+              //             fit: BoxFit.cover,
+              //             // colorFilter: ColorFilter.mode(
+              //             //     Colors.black.withOpacity(0.8), BlendMode.dstATop),
+              //             image: AssetImage(
+              //               "assets/images/topimage.png",
+              //             )),
               //       ),
               //     ),
               //   ),
               // ),
-              // Container(color:Colors.grey[200])   ,
+              // Container(color: Colors.grey[200]),
               if (context.isPortrait)
                 Container(
                     height: 400.h,

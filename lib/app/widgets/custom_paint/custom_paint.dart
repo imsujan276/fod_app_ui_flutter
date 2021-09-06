@@ -76,7 +76,8 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
     paint_0_fill.color = // Color(0xfffc6011)
         color.withOpacity(1.0);
-    canvas.drawShadow(path_0, Color(0xff000000), 3, true);
+    canvas.drawShadow(
+        path_0.shift(Offset(0, 10)), Colors.grey.withOpacity(.2), 3, true);
     canvas.drawPath(path_0, paint_0_fill);
   }
 

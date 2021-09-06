@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'app/constants/constants.dart';
+import 'app/initialbindings.dart';
 import 'app/routes/app_pages.dart';
 import 'app/theme/themeService.dart';
 import 'app/theme/themes.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
                   enableLog: true,
 
                   // logWriterCallback: Logger.write,
-                  // initialBinding: InitialBinding(),
+                  initialBinding: InitalBindings(),
                   // locale: TranslationService.locale,
                   // fallbackLocale: TranslationService.fallbackLocale,
                   // translations: TranslationService(),
