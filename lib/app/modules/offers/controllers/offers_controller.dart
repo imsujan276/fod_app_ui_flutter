@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 
-class OffersController extends GetxController {
-  //TODO: Implement OffersController
-
+class OffersController extends GetxController { 
   final count = 0.obs;
   @override
   void onInit() {

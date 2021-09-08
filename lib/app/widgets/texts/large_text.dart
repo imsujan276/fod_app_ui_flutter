@@ -1,5 +1,6 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/app/constants/app_colors.dart';
 
 class LargeText extends StatelessWidget {
   final double? fontSize;
@@ -14,7 +15,7 @@ class LargeText extends StatelessWidget {
     this.isBold = true,
     this.hasUnderline = false,
     this.isCentered = false,
-    this.color = Colors.grey,
+    this.color = AppColors.GREY,
   });
 
   @override

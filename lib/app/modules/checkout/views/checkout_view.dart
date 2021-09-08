@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/constants/images.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
@@ -8,7 +9,6 @@ import 'package:food_delivery/app/modules/paymentdetail/views/paymentdetail_view
 import 'package:food_delivery/app/routes/app_pages.dart';
 import 'package:food_delivery/app/widgets/bottomsheet/customBottomsheet.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
-import 'package:food_delivery/app/widgets/textFields/custom_textField.dart';
 import 'package:food_delivery/app/widgets/texts/large_text.dart';
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
 
@@ -114,8 +114,11 @@ successorFail(context) {
               isBold: false,
             ),
             CustomHeight(),
-            NormalText(
-                'Your order is now being processed. We  will let you know once the order is picked from th outlet. Check'),
+            Padding(
+              padding:   EdgeInsets.symmetric(horizontal:Constants.defaultPadding),
+              child: NormalText(
+                  'Your order is now being processed. We  will let you know once the order is picked from th outlet. Check'),
+            ),
             CustomHeight(),
             CustomTextButton(
               onPressed: () {},
@@ -124,10 +127,12 @@ successorFail(context) {
             CustomHeight(),
             InkWell(
                 onTap: () {
-                  Get.toNamed(Routes.MENUPAGE);
+                  Get.back();
+
+                  Get.to (()=>MenupageView());
                 },
                 child: LargeText('Back To Home',
-                    fontSize: 20.sp, color: Colors.grey.shade600)),
+                    fontSize: 20.sp, color:grey60)),
             CustomHeight(),
           ],
         ),
@@ -233,7 +238,6 @@ class PaymentOptions extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.sp),
           color: Colors.grey.withOpacity(.1)),
       child: Row(
-        // mainAxisSize: MainAxisSize.min,
         children: [
           if (image != '') Image.asset(image),
           NormalText(text),
@@ -287,4 +291,3 @@ class DeliveryAddress extends StatelessWidget {
     );
   }
 }
-

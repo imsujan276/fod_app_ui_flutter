@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/app/data/models/popularResturant.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
-import 'package:food_delivery/app/widgets/textFields/custom_textField.dart';
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
 
 import 'package:get/get.dart';

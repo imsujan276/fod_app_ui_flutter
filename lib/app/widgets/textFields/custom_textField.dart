@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_delivery/app/constants/constants.dart';
+import 'package:food_delivery/app/constants/app_colors.dart';
+import 'package:food_delivery/app/constants/constants.dart'; 
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
@@ -8,39 +9,39 @@ class CustomTextField extends StatelessWidget {
       required this.label,
       this.prefixIcon,
       this.height = 50,
-      this.width = double.infinity})
+      this.width = double.infinity,
+      this.padding = 0})
       : super(key: key);
   final String label;
   final IconData? prefixIcon;
   final double height;
   final double width;
+  final double padding;
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
-      // height:ScreenUtil
+      margin: EdgeInsets.symmetric(horizontal: padding),
+      padding:EdgeInsets.symmetric(horizontal:  padding),
       alignment: Alignment.center,
       height: height.h,
       width: width.h,
       decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(.2),
+        color: grey2,
         borderRadius: BorderRadius.circular(30),
       ),
       child: TextFormField(
-        style: TextStyle(color: Colors.grey),
+        style: TextStyle(color:  grey),
         decoration: InputDecoration(
-            // fillColor: Colors.grey.withOpacity(.2),
+ 
             border: InputBorder.none,
-            // border: OutlineInputBorder(
-            //   borderRadius: BorderRadius.circular(30),
-            // ),
+         
             prefixIcon: Container(
               child: Icon(prefixIcon),
             ),
             hintText: label,
             hintStyle: TextStyle(
               fontSize: Theme.of(context).textTheme.body1!.fontSize,
-              color: Colors.grey.withOpacity(.8),
+              color: grey60,
             )),
       ),
     );

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/widgets/bottomsheet/customBottomsheet.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
+import 'package:food_delivery/app/widgets/responsive_layout.dart';
 import 'package:food_delivery/app/widgets/textFields/custom_textField.dart';
 import 'package:food_delivery/app/widgets/texts/large_text.dart';
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
@@ -19,121 +18,56 @@ class PaymentdetailView extends GetView<PaymentdetailController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   title: Text('PaymentdetailView'),
-        //   centerTitle: true,
-        // ),
         body: SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            buildAppBar(
-                isBold: false,
-                title: 'Payment Details',
-                onPressed: () {
-                  Get.back();
-                }),
-            CustomHeight(),
-            Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
-              child: LargeText(
-                'Customize your payment method',
-                fontSize: 18.sp,
-                color: Colors.grey.shade700,
-              ),
-            ),
-            CustomHeight(),
-            Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
-              child: Divider(),
-            ),
-            CustomHeight(),
-            Container(
-              alignment: Alignment.center,
-              // height: 200.h,
-              decoration:
-                  BoxDecoration(color: Colors.grey.shade100, boxShadow: [
-                BoxShadow(
-                  offset: Offset(10, 20),
-                  color: Colors.grey.shade400,
-                  blurRadius: 20.sp,
-                  // spreadRadius: 10.sp,
-                )
-              ]),
-              padding: EdgeInsets.symmetric(
-                  horizontal: Constants.defaultPadding * 2,
-                  vertical: Constants.defaultPadding / 2),
+      child: ResponsiveLayout(
+        mobile: Container(
+          height: 1.sh,
+          child: SafeArea(
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomHeight(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      NormalText(
-                        'Cash/Card on delivery',
-                        color: Colors.grey[600],
-                        fontWeight: FontWeight.w600,
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.check,
-                        color: Theme.of(context).primaryColor,
-                      )
-                    ],
-                  ),
-                  Divider(),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Image.asset(
-                        'assets/images/vista.png',
-                        height: 30.h,
-                      ),
-                      NormalText(
-                        '**** **** **** 2187',
-                        fontWeight: FontWeight.w600,
-                      ),
-                      Spacer(),
-                      CustomOutlinedButton(
-                        label: 'DeleteCard',
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                  CustomHeight(
-                    height: 10,
-                  ),
-                  Divider(),
-                  CustomHeight(
-                    height: 10,
-                  ),
-                  NormalText(
-                    'Other methods',
-                    isBold: true,
-                    color: Colors.grey.shade600,
+                  buildAppBar(
+                      isBold: false,
+                      title: 'Payment Details',
+                      onPressed: () {
+                        Get.back();
+                      }),
+                  CustomHeight(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Constants.defaultPadding),
+                    child: LargeText(
+                      'Customize your payment method',
+                      fontSize: 18.sp,
+                      color: Colors.grey.shade700,
+                    ),
                   ),
                   CustomHeight(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Constants.defaultPadding),
+                    child: Divider(),
+                  ),
+                  CustomHeight(),
+                  PaymentCard(),
+                  CustomHeight(
+                    height: 40,
+                  ),
+                  Container(
+                    height: 60.h,
+                    child: CustomTextButton(
+                        icon: Icons.add,
+                        label: 'Add Another Credit/Debit Card',
+                        onPressed: () {
+                          // Get.to(PaymentWidget());
+                          addPayment(context);
+                        }),
+                  )
                 ],
               ),
             ),
-            CustomHeight(
-              height: 40,
-            ),
-            Container(
-              height: 60.h,
-              child: CustomTextButton(
-                  icon: Icons.add,
-                  label: 'Add Another Credit/Debit Card',
-                  onPressed: () {
-                    addPayment(context);
-                  }),
-            )
-          ],
+          ),
         ),
       ),
     )
@@ -148,10 +82,104 @@ class PaymentdetailView extends GetView<PaymentdetailController> {
   }
 }
 
+class PaymentCard extends StatelessWidget {
+  const PaymentCard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(color: Colors.grey.shade100, boxShadow: [
+        BoxShadow(
+          offset: Offset(10, 20),
+          color: Colors.grey.shade300,
+          blurRadius: 20.sp,
+        )
+      ]),
+      padding: EdgeInsets.symmetric(
+        horizontal: Constants.defaultPadding,
+        vertical: Constants.defaultPadding,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CustomHeight(
+            height: 10,
+          ),
+          Row(
+            children: [
+              NormalText(
+                'Cash/Card on delivery',
+                color: Colors.grey[600],
+                fontWeight: FontWeight.w600,
+              ),
+              Spacer(),
+              Icon(
+                Icons.check,
+                color: Theme.of(context).primaryColor,
+              )
+            ],
+          ),
+          Divider(),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Image.asset(
+                'assets/images/vista.png',
+                height: 30.h,
+              ),
+              NormalText(
+                '**** **** **** 2187',
+                fontWeight: FontWeight.w600,
+              ),
+              Spacer(),
+              Container(
+                height: 30.sp,
+                width: 100.sp,
+                child: CustomOutlinedButton(
+                  label: 'Delete Card',
+                  onPressed: () {},
+                ),
+              ),
+            ],
+          ),
+          CustomHeight(
+            height: 10,
+          ),
+          Divider(),
+          CustomHeight(
+            height: 10,
+          ),
+          NormalText(
+            'Other methods',
+            isBold: true,
+            color: Colors.grey.shade600,
+          ),
+          CustomHeight(),
+        ],
+      ),
+    );
+  }
+}
+
 addPayment(context) {
   return customBottomSheet(
     context,
-    Container(
+    PaymentWidget(),
+  );
+}
+
+class PaymentWidget extends StatelessWidget {
+  const PaymentWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: Constants.defaultmargin),
       padding: EdgeInsets.symmetric(
           horizontal: Constants.defaultPadding * 2,
           vertical: Constants.defaultPadding / 2),
@@ -188,7 +216,7 @@ addPayment(context) {
           CustomHeight(),
           Divider(),
           CustomHeight(),
-          CustomTextField(height: 60.h, label: 'Card Number'),
+          CustomTextField(label: 'Card Number'),
           CustomHeight(),
           Row(
             children: [
@@ -199,17 +227,17 @@ addPayment(context) {
               Spacer(
                 flex: 2,
               ),
-              CustomTextField(height: 60.h, width: 150.h, label: 'MM'),
+              CustomTextField(width: 100.sp, label: 'MM'),
               Spacer(flex: 1),
-              CustomTextField(height: 60.h, width: 150.h, label: 'HH'),
+              CustomTextField(width: 100.sp, label: 'HH'),
             ],
           ),
           CustomHeight(),
-          CustomTextField(height: 60.h, label: 'Security Code'),
+          CustomTextField(label: 'Security Code'),
           CustomHeight(),
-          CustomTextField(height: 60.h, label: 'First Name'),
+          CustomTextField(label: 'First Name'),
           CustomHeight(),
-          CustomTextField(height: 60.h, label: 'Last  Name'),
+          CustomTextField(label: 'Last  Name'),
           CustomHeight(),
           Row(
             children: [
@@ -227,6 +255,6 @@ addPayment(context) {
           CustomHeight(),
         ],
       ),
-    ),
-  );
+    );
+  }
 }

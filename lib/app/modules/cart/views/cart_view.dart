@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/constants/images.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
@@ -15,10 +16,6 @@ class CartView extends GetView<CartController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   title: Text('CartView'),
-        //   centerTitle: true,
-        // ),
         body: SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -33,97 +30,11 @@ class CartView extends GetView<CartController> {
             CustomHeight(
               height: 10,
             ),
-            Container(
-              margin: EdgeInsets.symmetric(
-                  horizontal: Constants.defaultPadding * 2),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 100.h,
-                    width: 100.h,
-                    decoration: BoxDecoration(
-                      // borderRadius: BorderRadius.circular(20.sp),
-                      image: DecorationImage(
-                          image:
-                              AssetImage(AppImages.base + '/kingburger.png')),
-                      // color: Colors.grey,
-                    ),
-                    // child: Image.asset(AppImages.base + '/kingburger.png'),
-                  ),
-                  SizedBox(
-                    width: 20.sp,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      LargeText(
-                        "King Burgers",
-                        fontSize: 24.sp,
-                        color: Colors.grey.shade700,
-                      ),
-                      SizedBox(
-                        height: 3.sp,
-                      ),
-                      RichText(
-                          text: TextSpan(
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w600),
-                              children: [
-                            WidgetSpan(
-                              child: Icon(
-                                Icons.star,
-                                color: Theme.of(context).primaryColor,
-                                size: 20.sp,
-                              ),
-                            ),
-                            TextSpan(
-                                text: '4.9 ',
-                                style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w600)),
-                            TextSpan(text: '(124 ratings)'),
-                          ])),
-                      SizedBox(
-                        height: 3.sp,
-                      ),
-                      Row(
-                        children: [
-                          NormalText('Burger'),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Icon(
-                            Icons.circle,
-                            size: 5.sp,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          NormalText(' Western Food'),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 3.sp,
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          NormalText(" No 03, 4th Lane, New Work")
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
+            TopWidget(),
             CustomHeight(
               height: 40,
             ),
-            Orders(),
+            OrderWidget(),
             CustomHeight(
               height: 30,
             ),
@@ -144,13 +55,15 @@ class CartView extends GetView<CartController> {
                   LargeText(
                     'Sub total',
                     color: Colors.grey.shade700,
-                    fontSize: 20.sp,
+                    fontSize: Constants.defaultFontSize,
+                    isBold: true,
                   ),
                   Spacer(),
                   LargeText(
                     '\$ 68',
                     color: Theme.of(context).primaryColor,
-                    fontSize: 20.sp,
+                    fontSize: Constants.defaultFontSize,
+                    isBold: true,
                   ),
                 ],
               ),
@@ -166,13 +79,14 @@ class CartView extends GetView<CartController> {
                   LargeText(
                     'Delivery cost',
                     color: Colors.grey.shade700,
-                    fontSize: 20.sp,
+                    fontSize: Constants.defaultFontSize,
+                    isBold: true,
                   ),
                   Spacer(),
                   LargeText(
                     '\$ 1',
                     color: Theme.of(context).primaryColor,
-                    fontSize: 20.sp,
+                    fontSize: Constants.defaultFontSize,
                   ),
                 ],
               ),
@@ -193,13 +107,14 @@ class CartView extends GetView<CartController> {
                   LargeText(
                     'Total',
                     color: Colors.grey.shade700,
-                    fontSize: 20.sp,
+                    fontSize: Constants.defaultFontSize,
                   ),
                   Spacer(),
                   LargeText(
                     '\$70',
                     color: Theme.of(context).primaryColor,
-                    fontSize: 20.sp,
+                    fontSize: Constants.defaultFontSize,
+                    isBold: true,
                   ),
                 ],
               ),
@@ -220,6 +135,98 @@ class CartView extends GetView<CartController> {
   }
 }
 
+class TopWidget extends StatelessWidget {
+  const TopWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: 100.sp,
+            width: 100.sp,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(AppImages.base + '/kingburger.png')),
+            ),
+          ),
+          SizedBox(
+            width: 10.sp,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              LargeText(
+                "King Burgers",
+                fontSize: Constants.defaultFontSize,
+                isBold: true,
+                color: grey70,
+              ),
+              SizedBox(
+                height: 3.sp,
+              ),
+              RichText(
+                  text: TextSpan(
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.w600),
+                      children: [
+                    WidgetSpan(
+                      child: Icon(
+                        Icons.star,
+                        color: Theme.of(context).primaryColor,
+                        size: 20.sp,
+                      ),
+                    ),
+                    TextSpan(
+                        text: '4.9 ',
+                        style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.w600)),
+                    TextSpan(text: '(124 ratings)'),
+                  ])),
+              SizedBox(
+                height: 3.sp,
+              ),
+              Row(
+                children: [
+                  NormalText('Burger'),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Icon(
+                    Icons.circle,
+                    size: 5.sp,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  NormalText(' Western Food'),
+                ],
+              ),
+              SizedBox(
+                height: 3.sp,
+              ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.location_on,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  NormalText(" No 03, 4th Lane, New Work")
+                ],
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
 class AddDeliveryNote extends StatelessWidget {
   const AddDeliveryNote({
     Key? key,
@@ -234,7 +241,8 @@ class AddDeliveryNote extends StatelessWidget {
           LargeText(
             'Delivery Instructions',
             color: Colors.grey.shade700,
-            fontSize: 20.sp,
+            fontSize: Constants.defaultFontSize,
+            isBold: true,
           ),
           Spacer(),
           MaterialButton(
@@ -259,8 +267,8 @@ class AddDeliveryNote extends StatelessWidget {
   }
 }
 
-class Orders extends StatelessWidget {
-  const Orders({
+class OrderWidget extends StatelessWidget {
+  const OrderWidget({
     Key? key,
   }) : super(key: key);
 

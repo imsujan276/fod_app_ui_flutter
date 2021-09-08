@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/constants.dart';
-import 'package:food_delivery/app/modules/login/views/three_view.dart';
+import 'package:food_delivery/app/modules/login/views/login.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
 import 'package:food_delivery/app/widgets/textFields/custom_textField.dart';
 import 'package:food_delivery/app/widgets/texts/texts.dart';
@@ -63,36 +63,42 @@ class FormWidget extends StatelessWidget {
           height: 20.h,
         ),
         CustomTextField(
+          padding: Constants.defaultPadding,
           label: 'Email or Username',
         ),
         SizedBox(
           height: 15,
         ),
         CustomTextField(
+          padding: Constants.defaultPadding,
           label: 'Email',
         ),
         SizedBox(
           height: 20.h,
         ),
         CustomTextField(
+          padding: Constants.defaultPadding,
           label: 'Mobile No.',
         ),
         SizedBox(
           height: 20.h,
         ),
         CustomTextField(
+          padding: Constants.defaultPadding,
           label: 'Address',
         ),
         SizedBox(
           height: 20.h,
         ),
         CustomTextField(
+          padding: Constants.defaultPadding,
           label: 'Password',
         ),
         SizedBox(
           height: 20.h,
         ),
         CustomTextField(
+          padding: Constants.defaultPadding,
           label: 'Confirm Password',
         ),
         SizedBox(

@@ -1,15 +1,7 @@
-import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-// //Add this CustomPaint widget to the Widget Tree
-// CustomPaint(
-//     size: Size(WIDTH, (WIDTH*1.0213333333333334).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-//     painter: RPSCustomPainter(),
-// )
-
-//Copy this CustomPainter code to the Bottom of the File
 class RPSCustomPainter extends CustomPainter {
   final Color color;
 

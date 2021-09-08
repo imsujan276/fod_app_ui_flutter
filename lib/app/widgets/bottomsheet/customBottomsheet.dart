@@ -12,7 +12,7 @@ void customBottomSheet(BuildContext context, widget) {
             color: Color.fromRGBO(0, 0, 0, 0.001),
             child: GestureDetector(
               onTap: () {},
-              child: widget,
+              child: SingleChildScrollView(child: widget),
               // child: DraggableScrollableSheet(
               //     initialChildSize: .9,
               //     minChildSize: 0.9,

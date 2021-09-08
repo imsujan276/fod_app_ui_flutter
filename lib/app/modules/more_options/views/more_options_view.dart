@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_delivery/app/constants/constants.dart';
-import 'package:food_delivery/app/data/models/menuItem.dart';
+import 'package:food_delivery/app/constants/constants.dart'; 
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/modules/paymentdetail/views/paymentdetail_view.dart';
 import 'package:food_delivery/app/routes/app_pages.dart';
@@ -72,7 +71,7 @@ class BodyPart extends StatelessWidget {
         BodyItem(
             item: moreOptions[0],
             ontap: () {
-              Get.to(() => PaymentdetailView());
+              Get.to(PaymentdetailView());
             }),
         BodyItem(
             item: moreOptions[1],

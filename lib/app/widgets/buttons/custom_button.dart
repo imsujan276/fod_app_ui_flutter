@@ -46,33 +46,39 @@ class CustomOutlinedButton extends StatelessWidget {
     required this.label,
     required this.onPressed,
     this.backgroundColor = AppColors.GREY,
-    this.textColor = AppColors.BLACK,
+    this.textColor = AppColors.BLACK, this.defaultPadding=0,
   });
 
   final VoidCallback onPressed;
   final String label;
   final Color backgroundColor;
   final Color textColor;
+  final double defaultPadding;
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      child: NormalText(
-        label,
-        color: Theme.of(context).primaryColor,
-      ),
-      onPressed: onPressed,
-      style: OutlinedButton.styleFrom(
-        primary: textColor, // foreground
-        padding: EdgeInsets.symmetric(horizontal: 25.sp, vertical: 10.sp),
-        side: BorderSide(
-          color: AppColors.PRIMARY_COLOR,
+    return Container(
+      width: double.infinity,
+      height: 50.h,
+      padding: EdgeInsets.symmetric(horizontal:  defaultPadding),
+      child: OutlinedButton(
+        child: Text(
+          label,
+          style: TextStyle(color: Theme.of(context).primaryColor),
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
+        onPressed: onPressed,
+        style: OutlinedButton.styleFrom(
+          primary: textColor, // foreground
+
+          side: BorderSide(
+            color: AppColors.PRIMARY_COLOR,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+          // background
+          onSurface: AppColors.PRIMARY_COLOR, // disabled
         ),
-        // background
-        onSurface: AppColors.PRIMARY_COLOR, // disabled
       ),
     );
   }
@@ -98,23 +104,13 @@ class CustomTextButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-          height: 50.h,
+          height: 50.sp,
           margin: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
           alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
           decoration: BoxDecoration(
               color: btnColor,
-              // gradient: LinearGradient(
-              //   colors: [
-              //     // Color.fromRGBO(255, 143, 158, 1),
-              //     // Colors.orange.withOpacity(.2)
-              //   ],
-              //   begin: Alignment.centerLeft,
-              //   end: Alignment.centerRight,
-              // ),
-
-              borderRadius: const BorderRadius.all(
-                Radius.circular(30.0),
+              borderRadius: BorderRadius.all(
+                Radius.circular(50.0.sp),
               ),
               boxShadow: [BoxShadow(color: borderColor, spreadRadius: 1)]),
           child: Row(

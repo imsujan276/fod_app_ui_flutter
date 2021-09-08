@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_delivery/app/constants/constants.dart';
+import 'package:food_delivery/app/constants/constants.dart'; 
 import 'package:food_delivery/app/constants/images.dart';
 import 'package:food_delivery/app/modules/detail/views/detail_view.dart';
 import 'package:food_delivery/app/modules/menupage/controllers/menupage_controller.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/widgets/responsive_layout.dart';
 import 'package:food_delivery/app/widgets/textFields/custom_textField.dart';
-import 'package:food_delivery/app/widgets/texts/large_text.dart';
-
+ 
 import 'package:get/get.dart';
 
 import '../controllers/category_controller.dart';
@@ -43,7 +41,7 @@ class CategoryView extends GetView<CategoryController> {
                 CustomHeight(
                   height: 10,
                 ),
-                CustomTextField(prefixIcon: Icons.search, label: 'Search food'),
+                CustomTextField( padding: Constants.defaultPadding,prefixIcon: Icons.search, label: 'Search food'),
                 CustomHeight(
                   height: 30,
                 ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/constants.dart';
-import 'package:food_delivery/app/modules/login/views/three_view.dart';
+import 'package:food_delivery/app/modules/login/views/login.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
 import 'package:food_delivery/app/widgets/textFields/custom_textField.dart';
 import 'package:food_delivery/app/widgets/texts/texts.dart';
@@ -34,15 +34,18 @@ class NewPassword extends StatelessWidget {
               SizedBox(
                 height: 40.h,
               ),
-              CustomTextField(label: 'New Password'),
+              CustomTextField(
+                padding: Constants.defaultPadding,
+                label: 'New Password'),
               SizedBox(
                 height: 20.h,
               ),
-              CustomTextField(label: 'Confirm Password'),
+              CustomTextField(  padding: Constants.defaultPadding,label: 'Confirm Password'),
               SizedBox(
                 height: 40.h,
               ),
               CustomTextButton(
+                
                   label: 'Next',
                   textColor: Theme.of(context).scaffoldBackgroundColor,
                   onPressed: () {

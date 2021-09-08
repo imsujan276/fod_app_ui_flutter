@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery/app/constants/app_colors.dart';
+import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/constants/images.dart';
 import 'package:food_delivery/app/data/models/categoryItem.dart';
 import 'package:food_delivery/app/data/models/mostPopular.dart';
@@ -28,14 +30,9 @@ class HomeWidget extends StatelessWidget {
           CustomHeight(height: 6),
           _buildAddressWidget(context),
           CustomHeight(height: 16),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 16,
-            ),
-            child: CustomTextField(
-              prefixIcon: Icons.search,
-              label: 'Search food',
-            ),
+          CustomTextField(padding: Constants.defaultPadding,
+            prefixIcon: Icons.search,
+            label: 'Search food',
           ),
           CustomHeight(),
           _categoryWidget(),
@@ -61,8 +58,8 @@ class HomeWidget extends StatelessWidget {
         ...recentData.map(
           (e) => Container(
             height: 60.h,
-            margin: EdgeInsets.only(bottom: 16.sp),
-            padding: EdgeInsets.symmetric(horizontal: 18.sp),
+            margin: EdgeInsets.only(bottom: Constants.defaultmargin),
+            padding: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
@@ -79,13 +76,13 @@ class HomeWidget extends StatelessWidget {
                       '${e.name} by ${e.uploadedResturant}',
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w700,
-                      color: Colors.grey[700],
+                      color: grey70,
                     ),
                     CustomHeight(height: 3),
                     RichText(
                         text: TextSpan(
                             style: TextStyle(
-                              color: Colors.grey,
+                              color: grey,
                               fontWeight: FontWeight.w600,
                               fontSize: 12.sp,
                             ),
@@ -250,15 +247,12 @@ class HomeWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 5.h),
-                      Expanded(
-                        child: NormalText(
-                          categoryData[i].name,
-                          color: Colors.grey[600],
+                      NormalText(categoryData[i].name,
+                          color: grey70,
                           isCentered: true,
-                          isBold: true,
-                          fontSize: 16.sp,
-                        ),
-                      ),
+                          fontSize: Constants.defaultFontSize,
+                          // isBold: true,
+                          fontWeight: FontWeight.w600),
                     ]),
               );
             }));
@@ -370,7 +364,6 @@ class PopularResturantWidget extends StatelessWidget {
       onTap: () {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (_) => DetailView()));
-        // Get.to((DetailView()));
       },
       child: Column(
         children: [
@@ -393,12 +386,6 @@ class PopularResturantWidget extends StatelessWidget {
                   color: Colors.grey[700],
                   fontSize: 16.sp,
                 ),
-                // NormalText(
-                //   'Minute by tuk tuk',
-                //   fontWeight: FontWeight.w700,
-                //   color: Colors.grey[700],
-                //   fontSize: 14,
-                // ),
                 CustomHeight(
                   height: 3,
                 ),

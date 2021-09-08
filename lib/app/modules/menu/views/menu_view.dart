@@ -16,25 +16,24 @@ import '../controllers/menu_controller.dart';
 class MenuView extends GetView<MenuController> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: ResponsiveLayout(
-        mobile: Container(
+    return ResponsiveLayout(
+      mobile: SafeArea(
+        child: Container(
           height: 1.sh,
           color: AppColors.GREY50,
-          child: SafeArea(
-            child: Column(
-              children: [
-                buildAppBar(
-                  title: 'Menu',
-                ),
-                CustomTextField(
-                  label: 'Search food',
-                  prefixIcon: Icons.search,
-                ),
-                CustomHeight(),
-                MenuWidgets()
-              ],
-            ),
+          child: Column(
+            children: [
+              buildAppBar(
+                title: 'Menu',
+              ),
+              CustomTextField(
+                padding: Constants.defaultPadding,
+                label: 'Search food',
+                prefixIcon: Icons.search,
+              ),
+              CustomHeight(),
+              MenuWidgets()
+            ],
           ),
         ),
       ),
@@ -59,16 +58,14 @@ class MenuWidgets extends StatelessWidget {
               child: DesignContainer(),
             ),
             Container(
-                // margin:
-                //     EdgeInsets.only(left: 16.sp, bottom: 50.sp, right: 16.sp),
-                alignment: Alignment.centerLeft,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ...menuitems.map((e) => MenuItems(menuItem: e)),
-                    ],
-                  ),
-                )),
+              width: double.infinity,
+              margin: EdgeInsets.only(top: 40.sp, left: 0),
+              child: Column(
+                children: [
+                  ...menuitems.map((e) => MenuItems(menuItem: e)),
+                ],
+              ),
+            ),
             // Container(
             //   height: 70.h,
             //   width: 300.w,
@@ -118,8 +115,7 @@ class MenuItems extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
-                BoxShadow(
-                    blurRadius: 4, color: Colors.grey.shade300, spreadRadius: 1)
+                BoxShadow(blurRadius: 4, color: grey30, spreadRadius: 1)
               ],
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
@@ -127,12 +123,12 @@ class MenuItems extends StatelessWidget {
                   topRight: Radius.circular(10.sp),
                   bottomRight: Radius.circular(10.sp))),
           height: 70.h,
-          width: 0.8.sw, //: 300.w,
+          width: 280.w, //: 300.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              LargeText(menuItem.name, fontSize: 18.sp, color: AppColors.GREY),
+              LargeText(menuItem.name, fontSize: 18.sp, color: grey70),
               CustomHeight(
                 height: 2,
               ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/modules/reset_password/views/otp_verification.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
@@ -42,6 +41,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                 height: 40.h,
               ),
               CustomTextField(
+                padding: Constants.defaultPadding,
                 label: 'Email ',
               ),
               SizedBox(

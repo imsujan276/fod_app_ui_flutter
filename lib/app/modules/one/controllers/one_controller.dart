@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 
 class OneController extends GetxController {
-  //TODO: Implement OneController
-
   final count = 0.obs;
   @override
   void onInit() {

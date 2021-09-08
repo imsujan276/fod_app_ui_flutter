@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/constants/images.dart';
-import 'package:food_delivery/app/modules/login/views/three_view.dart';
+import 'package:food_delivery/app/modules/login/views/login.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
 import 'package:food_delivery/app/widgets/texts/large_text.dart';
@@ -18,38 +18,16 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   title: Text('ProfileView'),
-        //   centerTitle: true,
-        // ),
         body: SafeArea(
       child: SingleChildScrollView(
         child: Container(
-          // margin: EdgeInsets.symmetric(vertical: 10.sp),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildAppBar(title: 'Profile', isBold: false),
-              ProfileTop(),
+              ProfileHeader(),
               CustomHeight(),
-              Column(
-                children: [
-                  DisabledText(label: 'Name', info: 'Emilia Clarke'),
-                  DisabledText(label: 'Email', info: 'emailiaclarke@email.com'),
-                  DisabledText(label: 'Mobile No', info: '9898989898'),
-                  DisabledText(
-                      label: 'Address',
-                      info: 'No 23, 6th Lane Colombo 03 Clarke'),
-                  DisabledText(label: 'Password', info: '**********'),
-                  DisabledText(label: 'Confirm Password', info: '**********'),
-                  CustomHeight(),
-                  CustomTextButton(
-                    label: 'Save',
-                    onPressed: () {},
-                  )
-                  // UserDetail(label: 'Name', info: 'Emilia Clarke'),
-                ],
-              ),
+              ProfileBoxy(),
               CustomHeight(
                 height: 30,
               ),
@@ -61,8 +39,34 @@ class ProfileView extends GetView<ProfileController> {
   }
 }
 
-class DisabledText extends StatelessWidget {
-  const DisabledText({
+class ProfileBoxy extends StatelessWidget {
+  const ProfileBoxy({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CustomProfileMenu(label: 'Name', info: 'Emilia Clarke'),
+        CustomProfileMenu(label: 'Email', info: 'emailiaclarke@email.com'),
+        CustomProfileMenu(label: 'Mobile No', info: '9898989898'),
+        CustomProfileMenu(
+            label: 'Address', info: 'No 23, 6th Lane Colombo 03 Clarke'),
+        CustomProfileMenu(label: 'Password', info: '**********'),
+        CustomProfileMenu(label: 'Confirm Password', info: '**********'),
+        CustomHeight(),
+        CustomTextButton(
+          label: 'Save',
+          onPressed: () {},
+        )
+      ],
+    );
+  }
+}
+
+class CustomProfileMenu extends StatelessWidget {
+  const CustomProfileMenu({
     Key? key,
     required this.info,
     required this.label,
@@ -81,29 +85,25 @@ class DisabledText extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50.sp),
             color: Colors.grey.withOpacity(.15)),
-        height: 70.h,
         child: TextField(
-            enabled: false,
-            decoration: InputDecoration(
-              // contentPadding:
-              //     EdgeInsets.only(left: 40.sp, top: 16.sp),
-              border: InputBorder.none,
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              labelText: label, // 'Name',
-              labelStyle: TextStyle(fontSize: 20.sp),
-              hintStyle: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey[600]),
-              hintText: info,
-            ) //'Emilia Clarke'),
-            //
-            ));
+          enabled: false,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            labelText: label, // 'Name',
+            labelStyle: TextStyle(fontSize: 20.sp),
+            hintStyle: TextStyle(
+                fontSize: Constants.defaultFontSize,
+                fontWeight: FontWeight.w600,
+                color: grey70),
+            hintText: info,
+          ),
+        ));
   }
 }
 
-class ProfileTop extends StatelessWidget {
-  const ProfileTop({
+class ProfileHeader extends StatelessWidget {
+  const ProfileHeader({
     Key? key,
   }) : super(key: key);
 

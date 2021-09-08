@@ -5,7 +5,7 @@ import 'package:food_delivery/app/modules/menu/views/menu_view.dart';
 import 'package:food_delivery/app/modules/more_options/views/more_options_view.dart';
 import 'package:food_delivery/app/modules/offers/views/offers_view.dart';
 import 'package:food_delivery/app/modules/profile/views/profile_view.dart';
-import 'package:food_delivery/app/routes/app_pages.dart';
+ 
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
 
 import 'package:get/get.dart';
@@ -66,8 +66,7 @@ Widget floatingbtn(context) {
       onPressed: () {
         Get.back();
         controller.updateCurrentIndex(0);
-
-        Get.to(MenupageView());
+  Get.to(()=>MenupageView());
       },
     ),
   );
@@ -76,14 +75,14 @@ Widget floatingbtn(context) {
 Widget bottomNav() {
   final controller = Get.find<MenupageController>();
   return Obx(
-    () => controller.currentIndex == 5
+    () => controller.currentIndex == 10
         ? Container()
         : BottomAppBar(
             color: Colors.white,
             shape: CircularNotchedRectangle(),
             notchMargin: 12.sp,
             child: Container(
-              padding: EdgeInsets.only(top: 10.h),
+              padding: EdgeInsets.only(top: 10.h,bottom: 5.sp),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -97,7 +96,7 @@ Widget bottomNav() {
                       ontap: () {
                         Get.back();
                         controller.updateCurrentIndex(1);
-                        Get.to(MenupageView());
+                         Get.to(()=>MenupageView());
                       }),
                   Spacer(
                     flex: 1,
@@ -109,7 +108,7 @@ Widget bottomNav() {
                       ontap: () {
                         Get.back();
                         controller.updateCurrentIndex(2);
-                        Get.to(MenupageView());
+                         Get.to(()=>MenupageView());
                       }),
                   Spacer(
                     flex: 4,
@@ -121,7 +120,7 @@ Widget bottomNav() {
                       ontap: () {
                         Get.back();
                         controller.updateCurrentIndex(3);
-                        Get.to(MenupageView());
+                        Get.to(()=>MenupageView());
                       }),
                   Spacer(
                     flex: 1,
@@ -133,7 +132,7 @@ Widget bottomNav() {
                       ontap: () {
                         Get.back();
                         controller.updateCurrentIndex(4);
-                        Get.to(MenupageView());
+                      Get.to(()=>MenupageView());
                       }),
                   Spacer(
                     flex: 1,

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_delivery/app/constants/images.dart';
-import 'package:food_delivery/app/modules/login/views/three_view.dart';
+import 'package:food_delivery/app/constants/constants.dart';
+import 'package:food_delivery/app/modules/login/views/login.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/modules/signup/views/four_view.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
-import 'package:food_delivery/app/widgets/custom_paint/custom_paint.dart';
 import 'package:food_delivery/app/widgets/responsive_layout.dart';
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
 
@@ -25,6 +24,7 @@ class HomeView extends GetView<HomeController> {
           child: Stack(
             fit: StackFit.expand,
             children: [
+              ///custom paint part
               // Container(
               //   height: 400.h,
               //   child: CustomPaint(
@@ -80,33 +80,27 @@ class HomeView extends GetView<HomeController> {
               ),
               CustomSizedBox(),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18.sp),
+                padding: EdgeInsets.symmetric(
+                    horizontal: Constants.defaultPadding * 2),
                 child: NormalText(
                   'Discover the best foods from over 1,000 resturants and fast delivery to your doorstep',
                   isCentered: true,
                 ),
               ),
               CustomSizedBox(flex: 2),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18.sp),
-                child: CustomTextButton(
-                    label: 'Login',
-                    onPressed: () {
-                      Get.to(() => LoginView());
-                    }),
-              ),
+              CustomTextButton(
+                  label: 'Login',
+                  onPressed: () {
+                    Get.to(() => LoginView());
+                  }),
               CustomHeight(),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18.sp),
-                child: CustomTextButton(
-                    btnColor: Colors.white,
-                    borderColor: Color(0xfffc6011),
-                    label: 'Create an Account',
-                    textColor: Theme.of(context).primaryColor,
-                    onPressed: () {
-                      Get.to(() => SignupView());
-                    }),
-              ),
+              CustomOutlinedButton(
+                defaultPadding: Constants.defaultPadding,
+                  label: 'Create an Account',
+                  textColor: Theme.of(context).primaryColor,
+                  onPressed: () {
+                    Get.to(() => SignupView());
+                  }),
               CustomSizedBox(),
             ],
           ),

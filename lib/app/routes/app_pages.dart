@@ -1,3 +1,5 @@
+import 'package:food_delivery/app/modules/landing/bindings/home_binding.dart';
+import 'package:food_delivery/app/modules/landing/views/landing_view.dart';
 import 'package:get/get.dart';
 
 import 'package:food_delivery/app/data/models/categoryItem.dart';
@@ -11,12 +13,10 @@ import 'package:food_delivery/app/modules/checkout/bindings/checkout_binding.dar
 import 'package:food_delivery/app/modules/checkout/views/checkout_view.dart';
 import 'package:food_delivery/app/modules/detail/bindings/detail_binding.dart';
 import 'package:food_delivery/app/modules/detail/views/detail_view.dart';
-import 'package:food_delivery/app/modules/home/bindings/home_binding.dart';
-import 'package:food_delivery/app/modules/home/views/home_view.dart';
 import 'package:food_delivery/app/modules/inbox/bindings/inbox_binding.dart';
 import 'package:food_delivery/app/modules/inbox/views/inbox_view.dart';
 import 'package:food_delivery/app/modules/login/bindings/three_binding.dart';
-import 'package:food_delivery/app/modules/login/views/three_view.dart';
+import 'package:food_delivery/app/modules/login/views/login.dart';
 import 'package:food_delivery/app/modules/menu/bindings/menu_binding.dart';
 import 'package:food_delivery/app/modules/menu/views/menu_view.dart';
 import 'package:food_delivery/app/modules/menupage/bindings/menupage_binding.dart';

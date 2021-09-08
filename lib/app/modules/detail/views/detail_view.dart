@@ -34,38 +34,7 @@ class DetailView extends GetView<DetailController> {
                             AppImages.tandori,
                           ),
                           fit: BoxFit.fitWidth))
-                  // child: Column(
-                  //   mainAxisAlignment: MainAxisAlignment.end,
-                  //   crossAxisAlignment: CrossAxisAlignment.start,
-                  //   children: [
-                  //     LargeText(
-                  //       'French Apple Pie',
-                  //       color: Theme.of(context).scaffoldBackgroundColor,
-                  //     ),
-                  //     Row(children: [
-                  //       Icon(
-                  //         Icons.star,
-                  //         color: Theme.of(context).primaryColor,
-                  //       ),
-                  //       RichText(
-                  //           text: TextSpan(
-                  //         style: TextStyle(
-                  //             color: Theme.of(context).scaffoldBackgroundColor),
-                  //         children: [
-                  //           TextSpan(
-                  //               text: '4.6 ',
-                  //               style: TextStyle(
-                  //                   color: Theme.of(context).primaryColor)),
-                  //           TextSpan(
-                  //             text: 'Minute by tuk Tuk',
-                  //           ),
-                  //           WidgetSpan(child: dot(context)),
-                  //           TextSpan(text: 'Dessert')
-                  //         ],
-                  //       ))
-                  //     ])
-                  //   ],
-                  // ),
+             
                   ),
               Container(
                 margin: EdgeInsets.only(top: 250.h),
@@ -96,11 +65,7 @@ class DetailView extends GetView<DetailController> {
                 top: 230.h,
                 right: 12.sp,
                 child: AddToFavourite(),
-                // child: Image.asset('assets/images/shape.png'),
-                // child: Icon(
-                //   Icons.favorite,
-                //   color: Theme.of(context).primaryColor,
-                // ),
+             
               ),
             ],
           ),
@@ -205,7 +170,7 @@ class AddToCart extends StatelessWidget {
             ),
           ),
           Positioned(
-              left: .8.sw, //76.sw on portrait
+              left: .8.sw,  
               top: 60.sp,
               child: Container(
                 height: 40.h,
@@ -224,9 +189,7 @@ class AddToCart extends StatelessWidget {
                       ),
                     ],
                     borderRadius: BorderRadius.circular(30)),
-                // child: CircleAvatar(
-                //   backgroundColor: Colors.grey.shade100.withOpacity(.8),
-                // ),
+                
               ))
         ]),
       ),

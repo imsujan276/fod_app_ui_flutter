@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/modules/reset_password/views/reset_password_view.dart';
@@ -22,11 +23,13 @@ class LoginView extends GetView<ThreeController> {
     return Scaffold(
         body: SingleChildScrollView(
       child: ResponsiveLayout(
+        tablet: Container(),
         mobile: Container(
           height: 1.sh,
           padding:
               EdgeInsets.symmetric(vertical: Constants.defaultPadding.sp * 2),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CustomHeight(),
               LargeText(
@@ -39,10 +42,12 @@ class LoginView extends GetView<ThreeController> {
               ),
               CustomHeight(),
               CustomTextField(
+                padding: Constants.defaultPadding,
                 label: 'Email or Username',
               ),
               CustomHeight(),
               CustomTextField(
+                padding: Constants.defaultPadding,
                 label: 'Password',
               ),
               CustomHeight(),
@@ -65,14 +70,14 @@ class LoginView extends GetView<ThreeController> {
                 icon: FontAwesomeIcons.facebookF,
                 label: 'Facebook',
                 onPressed: () {},
-                btnColor: Colors.blue,
+                btnColor: blue,
               ),
               CustomHeight(),
               CustomTextButton(
                 icon: FontAwesomeIcons.googlePlusG,
                 label: 'Login with Google',
                 onPressed: () {},
-                btnColor: Colors.red,
+                btnColor: red,
               ),
               Spacer(),
               RichText(

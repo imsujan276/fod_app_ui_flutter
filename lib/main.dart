@@ -36,11 +36,9 @@ class MyApp extends StatelessWidget {
                   getPages: AppPages.routes,
                   enableLog: true,
 
-                  // logWriterCallback: Logger.write,
+                 
                   initialBinding: InitalBindings(),
-                  // locale: TranslationService.locale,
-                  // fallbackLocale: TranslationService.fallbackLocale,
-                  // translations: TranslationService(),
+              
                 );
               },
             );
@@ -50,9 +48,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-  // GetMaterialApp(
-  //       title: "Application",
-  //       initialRoute: AppPages.INITIAL,
-  //       getPages: AppPages.routes,
-  //     ),
+ 

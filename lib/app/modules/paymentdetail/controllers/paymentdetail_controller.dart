@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
 
 class PaymentdetailController extends GetxController {
-  //TODO: Implement PaymentdetailController
-
+   
   final count = 0.obs;
   @override
   void onInit() {
