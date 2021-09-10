@@ -32,13 +32,13 @@ class InboxView extends GetView<InboxController> {
         child: Column(
           children: [
             buildAppBar(
-                title:Strings.inbox,//'Inbox',
+                title: Strings.inbox, //'Inbox',
                 onPressed: () {
                   Get.back();
                 },
                 isBold: false),
-             for (int i = 0; i < 30; i++)
-              ListTile(
+            ...List.generate(100, (i) {
+              return ListTile(
                 contentPadding: EdgeInsets.symmetric(
                     vertical: Constants.defaultPadding / 3,
                     horizontal: Constants.defaultPadding),
@@ -66,7 +66,8 @@ class InboxView extends GetView<InboxController> {
                   ],
                 ),
                 subtitle: NormalText('Lorem ipsum dolor sit amet. consectur'),
-              )
+              );
+            }),
           ],
         ),
       ),
