@@ -77,9 +77,9 @@ class OrderItem extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: Constants.defaultPadding,
-                ),
+                 contentPadding: EdgeInsets.symmetric(
+                    vertical: Constants.defaultPadding / 3,
+                    horizontal: Constants.defaultPadding),
                 leading: Dot(),
                 title: Text(
                   notification.notification,

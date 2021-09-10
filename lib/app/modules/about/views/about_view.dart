@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/app/constants/constants.dart';
+import 'package:food_delivery/app/constants/strings.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +20,7 @@ class AboutView extends GetView<AboutController> {
                 onPressed: () {
                   Get.back();
                 },
-                title: 'About Us',
+                title: Strings.aboutus,
                 isBold: false),
             CustomHeight(),
             ...aboutus_data.map((details) => AboutUsDetails(details: details))

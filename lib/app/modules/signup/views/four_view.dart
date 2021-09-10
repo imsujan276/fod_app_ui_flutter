@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/constants.dart';
+import 'package:food_delivery/app/constants/strings.dart';
 import 'package:food_delivery/app/modules/login/views/login.dart';
+import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
 import 'package:food_delivery/app/widgets/textFields/custom_textField.dart';
 import 'package:food_delivery/app/widgets/texts/texts.dart';
@@ -16,12 +18,8 @@ class SignupView extends GetView<FourController> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-      child: Container(
-        height: 1.sh,
-        padding: EdgeInsets.symmetric(vertical: Constants.defaultPadding * 2),
-        child: SafeArea(
-          child: Form(),
-        ),
+      child: SafeArea(
+        child: Form(),
       ),
     ));
   }
@@ -48,7 +46,9 @@ class FormWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
+      children: [    SizedBox(
+          height: 20.h,
+        ),
         LargeText(
           'Sign Up',
         ),
@@ -56,7 +56,7 @@ class FormWidget extends StatelessWidget {
           height: 10.h,
         ),
         NormalText(
-          'Add you details to sign up',
+          Strings.add_details + Strings.signup.toLowerCase(),
           fontWeight: FontWeight.w800,
         ),
         SizedBox(
@@ -64,56 +64,56 @@ class FormWidget extends StatelessWidget {
         ),
         CustomTextField(
           padding: Constants.defaultPadding,
-          label: 'Email or Username',
+          label: Strings.username,
         ),
         SizedBox(
           height: 15,
         ),
         CustomTextField(
           padding: Constants.defaultPadding,
-          label: 'Email',
+          label: Strings.email,
         ),
         SizedBox(
           height: 20.h,
         ),
         CustomTextField(
           padding: Constants.defaultPadding,
-          label: 'Mobile No.',
+          label: Strings.mobile_no,
         ),
         SizedBox(
           height: 20.h,
         ),
         CustomTextField(
           padding: Constants.defaultPadding,
-          label: 'Address',
+          label: Strings.address,
         ),
         SizedBox(
           height: 20.h,
         ),
         CustomTextField(
           padding: Constants.defaultPadding,
-          label: 'Password',
+          label: Strings.password,
         ),
         SizedBox(
           height: 20.h,
         ),
         CustomTextField(
           padding: Constants.defaultPadding,
-          label: 'Confirm Password',
+          label: Strings.confirm_pass,
         ),
         SizedBox(
           height: 20.h,
         ),
         CustomTextButton(
-            label: 'Sign Up',
+            label: Strings.signup,
             textColor: Theme.of(context).scaffoldBackgroundColor,
             onPressed: () {
               Get.to(() => LoginView());
             }),
-        Spacer(),
+        CustomHeight(),
         RichText(
             text: TextSpan(
-                text: 'Already have an Account? ',
+                text: '${Strings.already_have} ',
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1!
@@ -123,7 +123,7 @@ class FormWidget extends StatelessWidget {
                   child: InkWell(
                 onTap: () => Get.to(() => LoginView()),
                 child: Text(
-                  'Login',
+                  Strings.login,
                   style: Theme.of(context)
                       .textTheme
                       .bodyText1!

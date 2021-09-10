@@ -46,7 +46,8 @@ class CustomOutlinedButton extends StatelessWidget {
     required this.label,
     required this.onPressed,
     this.backgroundColor = AppColors.GREY,
-    this.textColor = AppColors.BLACK, this.defaultPadding=0,
+    this.textColor = AppColors.BLACK,
+    this.defaultPadding = 0,
   });
 
   final VoidCallback onPressed;
@@ -59,8 +60,8 @@ class CustomOutlinedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 50.h,
-      padding: EdgeInsets.symmetric(horizontal:  defaultPadding),
+      height: 50.sp,
+      padding: EdgeInsets.symmetric(horizontal: defaultPadding),
       child: OutlinedButton(
         child: Text(
           label,
@@ -124,11 +125,13 @@ class CustomTextButton extends StatelessWidget {
                   size: 18.sp,
                 ),
               SizedBox(width: 10.sp),
-              NormalText(
-                label,
-                color: textColor,
-                isBold: icon != Icons.clear ? false : true,
-                fontSize: icon != Icons.clear ? 16.sp : 18.sp,
+              Flexible(
+                child: NormalText(
+                  label,
+                  color: textColor,
+                  // isBold: icon != Icons.clear ? false : true,
+                  fontSize: icon != Icons.clear ? 16.sp : 18.sp,
+                ),
               ),
             ],
           )),

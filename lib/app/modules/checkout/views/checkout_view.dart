@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/constants/images.dart';
+import 'package:food_delivery/app/constants/strings.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/modules/menupage/views/menupage_view.dart';
-import 'package:food_delivery/app/modules/paymentdetail/views/paymentdetail_view.dart';
-import 'package:food_delivery/app/routes/app_pages.dart';
+import 'package:food_delivery/app/modules/paymentdetail/views/paymentdetail_view.dart'; 
 import 'package:food_delivery/app/widgets/bottomsheet/customBottomsheet.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
 import 'package:food_delivery/app/widgets/texts/large_text.dart';
@@ -31,7 +31,7 @@ class CheckoutView extends GetView<CheckoutController> {
         child: Column(
           children: [
             buildAppBar(
-                title: 'Checkout',
+                title: Strings.checkout,//'Checkout',
                 isBold: false,
                 onPressed: () {
                   Get.back();

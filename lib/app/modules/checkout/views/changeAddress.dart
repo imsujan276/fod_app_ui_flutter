@@ -41,6 +41,7 @@ class ChangeAddress extends StatelessWidget {
               child: Column(
                 children: [
                   CustomTextField(
+                    padding: Constants.defaultPadding,
                     label: 'Search Address',
                     prefixIcon: Icons.search,
                   ),

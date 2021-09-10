@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/constants/images.dart';
+import 'package:food_delivery/app/constants/strings.dart';
 import 'package:food_delivery/app/data/models/categoryItem.dart';
 import 'package:food_delivery/app/data/models/mostPopular.dart';
 import 'package:food_delivery/app/data/models/popularResturant.dart';
@@ -26,13 +27,14 @@ class HomeWidget extends StatelessWidget {
     return ResponsiveLayout(
       mobile: ListView(
         children: [
-          buildAppBar(title: 'Good morning Akila!'),
+          buildAppBar(title: Strings.good_morning + ' Akila!'),
           CustomHeight(height: 6),
           _buildAddressWidget(context),
           CustomHeight(height: 16),
-          CustomTextField(padding: Constants.defaultPadding,
+          CustomTextField(
+            padding: Constants.defaultPadding,
             prefixIcon: Icons.search,
-            label: 'Search food',
+            label: Strings.search_food,
           ),
           CustomHeight(),
           _categoryWidget(),
@@ -51,7 +53,7 @@ class HomeWidget extends StatelessWidget {
   Widget _recentItems(context) {
     return Column(
       children: [
-        TitleWidget(name: 'Recent Items', ontap: () {}),
+        TitleWidget(name: Strings.recent_items, ontap: () {}),
         CustomHeight(
           height: 15,
         ),
@@ -135,7 +137,7 @@ class HomeWidget extends StatelessWidget {
   Widget _mostPopular(context) {
     return Column(
       children: [
-        TitleWidget(name: 'Most Popular', ontap: () {}),
+        TitleWidget(name: Strings.most_popular, ontap: () {}),
         CustomHeight(
           height: 15,
         ),
@@ -183,7 +185,7 @@ class HomeWidget extends StatelessWidget {
                                   shape: BoxShape.circle,
                                   color: Theme.of(context).primaryColor),
                             )),
-                            TextSpan(text: 'Western Food  '),
+                            TextSpan(text: mostPopular[i].type),
                             // TextSpan(text: '(${122} ratings) '),
                             WidgetSpan(
                               child: Icon(
@@ -214,7 +216,7 @@ class HomeWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleWidget(name: 'Popular Resturants', ontap: () {}),
+        TitleWidget(name: Strings.popular_resturant, ontap: () {}),
         ...resturantData.map((e) => PopularResturantWidget(
               resturantModel: e,
             ))
@@ -247,12 +249,16 @@ class HomeWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 5.h),
-                      NormalText(categoryData[i].name,
+                      Flexible(
+                        child: NormalText(
+                          categoryData[i].name,
                           color: grey70,
                           isCentered: true,
                           fontSize: Constants.defaultFontSize,
                           // isBold: true,
-                          fontWeight: FontWeight.w600),
+                          // fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ]),
               );
             }));
@@ -287,7 +293,10 @@ class HomeWidget extends StatelessWidget {
 }
 
 Widget buildAppBar(
-    {String title = '', onPressed = null, isBold = true, shoppingicon = true}) {
+    {String title = '',
+    onPressed = null,
+    isBold = false,
+    shoppingicon = true}) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 16.sp, vertical: 16.sp),
     child: Row(

@@ -112,19 +112,19 @@ class _OtpFormState extends State<OtpForm> {
               // ),
               PinWidget(
                   currentFocus: pin1FocusNode,
-                  pin4FocusNode: pin2FocusNode,
+                  nextFocusNode: pin2FocusNode,
                   otptextStyle: otptextStyle),
               PinWidget(
                   currentFocus: pin2FocusNode,
-                  pin4FocusNode: pin3FocusNode,
+                  nextFocusNode: pin3FocusNode,
                   otptextStyle: otptextStyle),
               PinWidget(
                   currentFocus: pin3FocusNode,
-                  pin4FocusNode: pin4FocusNode,
+                  nextFocusNode: pin4FocusNode,
                   otptextStyle: otptextStyle),
               PinWidget(
                   currentFocus: pin4FocusNode,
-                  pin4FocusNode: pin4FocusNode,
+                  nextFocusNode: pin4FocusNode,
                   otptextStyle: otptextStyle),
             ],
           ),
@@ -170,12 +170,12 @@ class _OtpFormState extends State<OtpForm> {
 class PinWidget extends StatelessWidget {
   const PinWidget({
     Key? key,
-    required this.pin4FocusNode,
+    required this.nextFocusNode,
     required this.otptextStyle,
     required this.currentFocus,
   }) : super(key: key);
   final FocusNode currentFocus;
-  final FocusNode pin4FocusNode;
+  final FocusNode nextFocusNode;
   final TextStyle otptextStyle;
   void nextField(String value, FocusNode focusNode) {
     if (value.length == 1) {
@@ -206,8 +206,8 @@ class PinWidget extends StatelessWidget {
         ),
         onChanged: (value) {
           if (value.length == 1) {
-            nextField(value, pin4FocusNode);
-            if (currentFocus == pin4FocusNode) pin4FocusNode.unfocus();
+            nextField(value, nextFocusNode);
+            if (currentFocus == nextFocusNode) nextFocusNode.unfocus();
             // Then you need to check is the code is correct or not
           }
         },

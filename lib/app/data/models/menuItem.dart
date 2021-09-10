@@ -8,8 +8,8 @@ class MenuItem {
 }
 
 final List<MenuItem> menuitems = [
-  MenuItem(name: 'Food', icon: AppImages.a, items: 120),
-  MenuItem(name: 'Beverages', icon: AppImages.b, items: 120),
-  MenuItem(name: 'Deserts', icon: AppImages.c, items: 120),
-  MenuItem(name: 'Promotions', icon: AppImages.d, items: 120),
+  MenuItem(name: 'Food', icon: AppImages.italian, items: 120),
+  MenuItem(name: 'Beverages', icon: AppImages.tea, items: 120),
+  MenuItem(name: 'Deserts', icon: AppImages.desert, items: 120),
+  MenuItem(name: 'Promotions', icon: AppImages.burger, items: 120),
 ];

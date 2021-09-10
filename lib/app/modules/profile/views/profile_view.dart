@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/constants/images.dart';
+import 'package:food_delivery/app/constants/strings.dart';
 import 'package:food_delivery/app/modules/login/views/login.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
@@ -27,7 +28,7 @@ class ProfileView extends GetView<ProfileController> {
               buildAppBar(title: 'Profile', isBold: false),
               ProfileHeader(),
               CustomHeight(),
-              ProfileBoxy(),
+              ProfileBody(),
               CustomHeight(
                 height: 30,
               ),
@@ -39,8 +40,8 @@ class ProfileView extends GetView<ProfileController> {
   }
 }
 
-class ProfileBoxy extends StatelessWidget {
-  const ProfileBoxy({
+class ProfileBody extends StatelessWidget {
+  const ProfileBody({
     Key? key,
   }) : super(key: key);
 
@@ -78,20 +79,18 @@ class CustomProfileMenu extends StatelessWidget {
     return Container(
         margin: EdgeInsets.symmetric(
             horizontal: Constants.defaultPadding,
-            vertical: Constants.defaultmargin / 2),
-        padding: EdgeInsets.symmetric(
-          horizontal: 40.sp,
-        ),
+            vertical: Constants.defaultmargin),
+        padding: EdgeInsets.symmetric(horizontal: 40.sp, vertical: 10.sp),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50.sp),
-            color: Colors.grey.withOpacity(.15)),
+            color: grey.withOpacity(.15)),
         child: TextField(
           enabled: false,
           decoration: InputDecoration(
             border: InputBorder.none,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             labelText: label, // 'Name',
-            labelStyle: TextStyle(fontSize: 20.sp),
+            labelStyle: TextStyle(fontSize: 20.sp, height: .05),
             hintStyle: TextStyle(
                 fontSize: Constants.defaultFontSize,
                 fontWeight: FontWeight.w600,
@@ -131,7 +130,7 @@ class ProfileHeader extends StatelessWidget {
                 width: 5.sp,
               ),
               NormalText(
-                'Edit Profile',
+                Strings.edit_profile,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w600,
                 color: Theme.of(context).primaryColor,
@@ -153,7 +152,7 @@ class ProfileHeader extends StatelessWidget {
               Get.to(LoginView());
             },
             child: NormalText(
-              'Sign Out',
+              Strings.signout,
               fontWeight: FontWeight.w600,
             ),
           ),

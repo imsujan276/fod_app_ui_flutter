@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/constants/images.dart';
+import 'package:food_delivery/app/constants/strings.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
 import 'package:food_delivery/app/widgets/texts/large_text.dart';
@@ -21,7 +22,7 @@ class CartView extends GetView<CartController> {
         child: Column(
           children: [
             buildAppBar(
-                title: 'My Order ',
+                title: Strings.order,
                 isBold: false,
                 onPressed: () {
                   Get.back();
@@ -47,83 +48,12 @@ class CartView extends GetView<CartController> {
             CustomHeight(
               height: 10,
             ),
-            Container(
-              padding:
-                  EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
-              child: Row(
-                children: [
-                  LargeText(
-                    'Sub total',
-                    color: Colors.grey.shade700,
-                    fontSize: Constants.defaultFontSize,
-                    isBold: true,
-                  ),
-                  Spacer(),
-                  LargeText(
-                    '\$ 68',
-                    color: Theme.of(context).primaryColor,
-                    fontSize: Constants.defaultFontSize,
-                    isBold: true,
-                  ),
-                ],
-              ),
-            ),
-            CustomHeight(
-              height: 10,
-            ),
-            Container(
-              padding:
-                  EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
-              child: Row(
-                children: [
-                  LargeText(
-                    'Delivery cost',
-                    color: Colors.grey.shade700,
-                    fontSize: Constants.defaultFontSize,
-                    isBold: true,
-                  ),
-                  Spacer(),
-                  LargeText(
-                    '\$ 1',
-                    color: Theme.of(context).primaryColor,
-                    fontSize: Constants.defaultFontSize,
-                  ),
-                ],
-              ),
-            ),
-            CustomHeight(
-              height: 10,
-            ),
-            Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
-              child: Divider(),
-            ),
-            Container(
-              padding:
-                  EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
-              child: Row(
-                children: [
-                  LargeText(
-                    'Total',
-                    color: Colors.grey.shade700,
-                    fontSize: Constants.defaultFontSize,
-                  ),
-                  Spacer(),
-                  LargeText(
-                    '\$70',
-                    color: Theme.of(context).primaryColor,
-                    fontSize: Constants.defaultFontSize,
-                    isBold: true,
-                  ),
-                ],
-              ),
-            ),
+            CartTotals(),
             CustomHeight(
               height: 30,
             ),
             CustomTextButton(
-                label: 'Checkout',
+                label: Strings.checkout,//'Checkout',
                 onPressed: () {
                   Get.toNamed('\checkout');
                 }),
@@ -132,6 +62,88 @@ class CartView extends GetView<CartController> {
         ),
       ),
     ));
+  }
+}
+
+class CartTotals extends StatelessWidget {
+  const CartTotals({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
+          child: Row(
+            children: [
+              LargeText(
+                'Sub total',
+                color: Colors.grey.shade700,
+                fontSize: Constants.defaultFontSize,
+                isBold: true,
+              ),
+              Spacer(),
+              LargeText(
+                '\$ 68',
+                color: Theme.of(context).primaryColor,
+                fontSize: Constants.defaultFontSize,
+                isBold: true,
+              ),
+            ],
+          ),
+        ),
+        CustomHeight(
+          height: 10,
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
+          child: Row(
+            children: [
+              LargeText(
+                'Delivery cost',
+                color: Colors.grey.shade700,
+                fontSize: Constants.defaultFontSize,
+                isBold: true,
+              ),
+              Spacer(),
+              LargeText(
+                '\$ 1',
+                color: Theme.of(context).primaryColor,
+                fontSize: Constants.defaultFontSize,
+              ),
+            ],
+          ),
+        ),
+        CustomHeight(
+          height: 10,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
+          child: Divider(),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
+          child: Row(
+            children: [
+              LargeText(
+                'Total',
+                color: Colors.grey.shade700,
+                fontSize: Constants.defaultFontSize,
+              ),
+              Spacer(),
+              LargeText(
+                '\$70',
+                color: Theme.of(context).primaryColor,
+                fontSize: Constants.defaultFontSize,
+                isBold: true,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
 

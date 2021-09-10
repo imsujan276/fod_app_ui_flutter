@@ -31,7 +31,7 @@ class OffersView extends GetView<OffersController> {
               ),
               CustomHeight(),
               Container(
-                width: 180.w,
+                width: 200.sp,
                 child: CustomTextButton(
                   label: 'Check offers',
                   onPressed: () {},

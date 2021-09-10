@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/widgets/texts/texts.dart';
 
@@ -32,11 +33,11 @@ class FoodItem extends StatelessWidget {
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
               colors: [
-                Colors.black.withOpacity(0.6),
-                Colors.black.withOpacity(0.4),
-                Colors.black.withOpacity(0.1),
-                Colors.black.withOpacity(0.05),
-                Colors.black.withOpacity(0.025),
+               AppColors.BLACK.withOpacity(0.6),
+                AppColors.BLACK.withOpacity(0.4),
+                 AppColors.BLACK.withOpacity(0.1),
+                AppColors.BLACK.withOpacity(0.05),
+                 AppColors.BLACK.withOpacity(0.025),
               ],
             ),
           ),

@@ -1,3 +1,6 @@
+import 'package:food_delivery/app/constants/images.dart';
+import 'package:food_delivery/app/constants/strings.dart';
+
 class CategoryItem {
   String name;
   String icon;
@@ -6,15 +9,12 @@ class CategoryItem {
 }
 
 List<CategoryItem> categoryData = [
-  CategoryItem(icon: 'assets/images/alireza.png', name: 'Offers'),
-  CategoryItem(icon: 'assets/images/aurelin.png', name: 'Sri Lankan '),
-  CategoryItem(icon: 'assets/images/hyaro.png', name: ' Italian'),
-  CategoryItem(icon: 'assets/images/hyaro.png', name: ' Italian'),
-  CategoryItem(icon: 'assets/images/hyaro.png', name: ' Italian'),
-  CategoryItem(icon: 'assets/images/hyaro.png', name: ' Italian'),
-  CategoryItem(icon: 'assets/images/hyaro.png', name: ' Italian'),
-  CategoryItem(icon: 'assets/images/hyaro.png', name: ' Italian'),
-  CategoryItem(icon: 'assets/images/hyaro.png', name: ' Italian'),
-  CategoryItem(icon: 'assets/images/hyaro.png', name: ' Italian'),
-  CategoryItem(icon: 'assets/images/hyaro.png', name: ' Italian'),
+  CategoryItem(icon: AppImages.alireza, name:Strings.offers),
+  CategoryItem(icon: AppImages.hyaro, name: 'Sri Lankan '),
+  CategoryItem(icon: AppImages.italian, name: ' Italian'),
+  CategoryItem(icon: AppImages.tea, name: ' Indian'),
+  CategoryItem(icon: AppImages.tea, name: ' Italian'),
+  CategoryItem(icon: AppImages.tea, name: ' Italian'),
+  CategoryItem(icon: AppImages.tea, name: ' Italian'),
+  CategoryItem(icon: AppImages.tea, name: ' Italian'),
 ];

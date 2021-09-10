@@ -59,12 +59,12 @@ class AppPages {
       binding: OneBinding(),
     ),
     GetPage(
-      name: _Paths.THREE,
+      name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
-      name: _Paths.FOUR,
+      name: _Paths.SIGNUP,
       page: () => SignupView(),
       binding: SignupBinding(),
     ),

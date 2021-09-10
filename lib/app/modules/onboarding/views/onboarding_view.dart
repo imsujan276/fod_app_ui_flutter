@@ -123,7 +123,7 @@ class ButtonPart extends StatelessWidget {
     return Obx(
       () => Container(
           alignment: Alignment.bottomCenter,
-          padding: EdgeInsets.symmetric(vertical: 15.h),
+          padding: EdgeInsets.symmetric(vertical:Constants.defaultPadding),
           child: CustomTextButton(
               label: controller.count.value == 2 ? 'Continue' : 'Next',
               onPressed: () {

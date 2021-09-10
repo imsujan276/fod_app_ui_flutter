@@ -6,8 +6,8 @@ abstract class Routes {
 
   static const HOME = _Paths.HOME;
   static const ONE = _Paths.ONE;
-  static const THREE = _Paths.THREE;
-  static const FOUR = _Paths.FOUR;
+  static const THREE = _Paths.LOGIN;
+  static const FOUR = _Paths.SIGNUP;
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
   static const ONBOARDING = _Paths.ONBOARDING;
   static const MENUPAGE = _Paths.MENUPAGE;
@@ -28,8 +28,8 @@ abstract class Routes {
 abstract class _Paths {
   static const HOME = '/home';
   static const ONE = '/one';
-  static const THREE = '/three';
-  static const FOUR = '/four';
+  static const LOGIN = '/three';
+  static const SIGNUP = '/four';
   static const RESET_PASSWORD = '/reset-password';
   static const ONBOARDING = '/onboarding';
   static const MENUPAGE = '/menupage';

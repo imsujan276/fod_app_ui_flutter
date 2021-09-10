@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class RPSCustomPainter extends CustomPainter {
   final Color color;
-
-  RPSCustomPainter(this.color);
+  RPSCustomPainter(
+    this.color,
+  );
   @override
   void paint(Canvas canvas, Size size) {
     Path path_0 = Path();
@@ -71,6 +70,7 @@ class RPSCustomPainter extends CustomPainter {
     canvas.drawShadow(
         path_0.shift(Offset(0, 10)), Colors.grey.withOpacity(.2), 3, true);
     canvas.drawPath(path_0, paint_0_fill);
+    // canvas.drawImage(image, Offset.zero, Paint());
   }
 
   @override

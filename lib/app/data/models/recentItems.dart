@@ -1,3 +1,5 @@
+import 'package:food_delivery/app/constants/images.dart';
+
 class RecentItemsModel {
   String name;
   int ratings;
@@ -19,14 +21,14 @@ List<RecentItemsModel> recentData = [
       name: 'MulberryPizza ',
       ratings: 124,
       stars: 4.9,
-      image: 'assets/images/alireza.png',
+      image: AppImages.alireza,
       type: 'WesternFood',
       uploadedResturant: '  Josh'),
   RecentItemsModel(
       name: 'Barita ',
       ratings: 124,
       stars: 4.9,
-      image: 'assets/images/hyaro.png',
+      image:AppImages.hyaro,
       type: 'WesternFood',
       uploadedResturant: '  Josh'),
   RecentItemsModel(

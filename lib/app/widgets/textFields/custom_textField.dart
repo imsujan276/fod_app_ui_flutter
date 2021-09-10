@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_delivery/app/constants/app_colors.dart';
-import 'package:food_delivery/app/constants/constants.dart'; 
+import 'package:food_delivery/app/constants/app_colors.dart'; 
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
@@ -23,7 +22,7 @@ class CustomTextField extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: padding),
       padding:EdgeInsets.symmetric(horizontal:  padding),
       alignment: Alignment.center,
-      height: height.h,
+      height: height.sp,
       width: width.h,
       decoration: BoxDecoration(
         color: grey2,
@@ -34,10 +33,8 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
  
             border: InputBorder.none,
-         
-            prefixIcon: Container(
-              child: Icon(prefixIcon),
-            ),
+        
+            prefixIcon: Icon(prefixIcon),
             hintText: label,
             hintStyle: TextStyle(
               fontSize: Theme.of(context).textTheme.body1!.fontSize,

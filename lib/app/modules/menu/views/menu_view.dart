@@ -16,24 +16,30 @@ import '../controllers/menu_controller.dart';
 class MenuView extends GetView<MenuController> {
   @override
   Widget build(BuildContext context) {
-    return ResponsiveLayout(
-      mobile: SafeArea(
-        child: Container(
-          height: 1.sh,
-          color: AppColors.GREY50,
-          child: Column(
-            children: [
-              buildAppBar(
-                title: 'Menu',
+    return Scaffold(
+      body: ResponsiveLayout(
+        mobile: SafeArea(
+          child: Container(
+            // height: 1.sh,
+            color: AppColors.GREY50,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  buildAppBar(
+                    title: 'Menu',
+                  ),
+                  CustomHeight(),
+                  CustomTextField(
+                    padding: Constants.defaultPadding,
+                    label: 'Search food',
+                    prefixIcon: Icons.search,
+                  ),
+                  CustomHeight(),
+                  CustomHeight(),
+                  MenuWidgets()
+                ],
               ),
-              CustomTextField(
-                padding: Constants.defaultPadding,
-                label: 'Search food',
-                prefixIcon: Icons.search,
-              ),
-              CustomHeight(),
-              MenuWidgets()
-            ],
+            ),
           ),
         ),
       ),
@@ -48,50 +54,48 @@ class MenuWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        height: .6.sh,
-        child: Stack(
-          children: [
-            Positioned(
-              left: 0,
-              child: DesignContainer(),
+    return Container(
+      height: 500.sp,
+      child: Stack(
+        children: [
+          Positioned(
+            left: 0,
+            child: DesignContainer(),
+          ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 40.sp, left: 0),
+            child: Column(
+              children: [
+                ...menuitems.map((e) => MenuItems(menuItem: e)),
+              ],
             ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(top: 40.sp, left: 0),
-              child: Column(
-                children: [
-                  ...menuitems.map((e) => MenuItems(menuItem: e)),
-                ],
-              ),
-            ),
-            // Container(
-            //   height: 70.h,
-            //   width: 300.w,
-            //   color: Colors.grey,
-            //   child: Center(
-            //     child: Column(
-            //       // mainAxisAlignment: MainAxisAlignment.center,
-            //       // crossAxisAlignment: CrossAxisAlignment.center,
-            //       children: [
-            //         Container(
-            //           decoration: BoxDecoration(
-            //               color: Colors.white,
-            //               borderRadius: BorderRadius.only(
-            //                   topLeft: Radius.circular(30),
-            //                   bottomLeft: Radius.circular(30),
-            //                   topRight: Radius.circular(10.sp),
-            //                   bottomRight: Radius.circular(10.sp))),
-            //           height: 70.h,
-            //           width: 300.w,
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            // )
-          ],
-        ),
+          ),
+          // Container(
+          //   height: 70.h,
+          //   width: 300.w,
+          //   color: Colors.grey,
+          //   child: Center(
+          //     child: Column(
+          //       // mainAxisAlignment: MainAxisAlignment.center,
+          //       // crossAxisAlignment: CrossAxisAlignment.center,
+          //       children: [
+          //         Container(
+          //           decoration: BoxDecoration(
+          //               color: Colors.white,
+          //               borderRadius: BorderRadius.only(
+          //                   topLeft: Radius.circular(30),
+          //                   bottomLeft: Radius.circular(30),
+          //                   topRight: Radius.circular(10.sp),
+          //                   bottomRight: Radius.circular(10.sp))),
+          //           height: 70.h,
+          //           width: 300.w,
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // )
+        ],
       ),
     );
   }
@@ -110,7 +114,7 @@ class MenuItems extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsets.only(
-              left: 40.sp, right: 20.sp, bottom: Constants.defaultmargin.sp),
+              left: 40.sp, right: 40.sp, bottom: Constants.defaultmargin.sp),
           padding: EdgeInsets.symmetric(horizontal: 40.sp),
           decoration: BoxDecoration(
               color: Colors.white,
@@ -122,8 +126,8 @@ class MenuItems extends StatelessWidget {
                   bottomLeft: Radius.circular(20),
                   topRight: Radius.circular(10.sp),
                   bottomRight: Radius.circular(10.sp))),
-          height: 70.h,
-          width: 280.w, //: 300.w,
+          height: 70.sp,
+          // width: 280.w, //: 300.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -141,12 +145,13 @@ class MenuItems extends StatelessWidget {
           top: 5.sp,
           child: Image.asset(
             menuItem.icon,
-            height: 60.h,
-            width: 60.h,
+            fit: BoxFit.contain,
+            height: 60.sp,
+            width: 60.sp,
           ),
         ),
         Positioned(
-          right: 0,
+          right: 20,
           child: InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
@@ -161,6 +166,7 @@ class MenuItems extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                 vertical: 24.sp,
               ),
+              alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 color: AppColors.WHITE,
                 shape: BoxShape.circle,
@@ -198,8 +204,8 @@ class DesignContainer extends StatelessWidget {
           topRight: Radius.circular(30.sp),
           bottomRight: Radius.circular(30.sp)),
       child: Container(
-        width: 80.w,
-        height: .6.sh,
+        width: 70.sp,
+        height: 450.sp,
         color: Theme.of(context).primaryColor,
       ),
     );

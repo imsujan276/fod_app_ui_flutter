@@ -5,13 +5,17 @@ import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
 
 class Themes {
+ 
   /// Light Theme
-  static final ThemeData light = ThemeData.light().copyWith(
+  static final ThemeData light = ThemeData(  fontFamily: 'Metropolis',
     brightness: Brightness.light,
     primaryColor: AppColors.PRIMARY_COLOR,
     accentColor: AppColors.ACCENT_COLOR,
     backgroundColor: AppColors.PRIMARY_COLOR_LIGHT,
     visualDensity: VisualDensity.adaptivePlatformDensity,
+
+   
+   
     // elevatedButtonTheme: _lightElevatedButtonThemeData,
     // textButtonTheme: _lightTextButtonThemeData,
     // outlinedButtonTheme: _lightOutlinedButtonThemeData,

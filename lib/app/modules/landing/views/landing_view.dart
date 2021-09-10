@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery/app/constants/app_colors.dart';
 import 'package:food_delivery/app/constants/constants.dart';
+import 'package:food_delivery/app/constants/images.dart';
+import 'package:food_delivery/app/constants/strings.dart';
 import 'package:food_delivery/app/modules/login/views/login.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/modules/signup/views/four_view.dart';
 import 'package:food_delivery/app/widgets/buttons/custom_button.dart';
+import 'package:food_delivery/app/widgets/custom_paint/custom_paint.dart';
 import 'package:food_delivery/app/widgets/responsive_layout.dart';
 import 'package:food_delivery/app/widgets/texts/normal_text.dart';
 
@@ -25,13 +29,17 @@ class HomeView extends GetView<HomeController> {
             fit: StackFit.expand,
             children: [
               ///custom paint part
-              // Container(
-              //   height: 400.h,
-              //   child: CustomPaint(
-              //     size: Size(double.infinity, 360.h.toDouble()),
-              //     painter: RPSCustomPainter(Color(0xFFBDBDBD)),
-              //   ),
-              // ),
+              Container(
+                height: 400.h,
+                width: 1.sw,
+                child: CustomPaint(
+                  size: Size(double.infinity, 350.h.toDouble()),
+                  painter: RPSCustomPainter(
+                    AppColors.PRIMARY_COLOR,
+                  ),
+                  child: Image.asset(AppImages.background,fit: BoxFit.fitWidth,)
+                ),
+              ),
               // Container(
               //   height: 400.h,
               //   width: double.infinity,
@@ -51,20 +59,23 @@ class HomeView extends GetView<HomeController> {
               //     ),
               //   ),
               // ),
+
               // Container(color: Colors.grey[200]),
-              if (context.isPortrait)
-                Container(
-                    height: 400.h,
-                    width: double.infinity,
-                    child: Image.asset("assets/images/topimage.png",
-                        fit: BoxFit.fill)),
+
+              ///drawing
+              // if (context.isPortrait)
+              //   Container(
+              //     height: 400.h,
+              //     width: 1.sw,
+              //     child: Image.asset(AppImages.topImage, fit: BoxFit.fitWidth),
+              //   ),
               Container(
                   height: 50.h,
                   alignment: !context.isPortrait
                       ? Alignment.center
                       : Alignment.bottomCenter,
                   child: Image.asset(
-                    "assets/images/logo.png",
+                    AppImages.logo,
                   )),
             ],
           ),
@@ -76,27 +87,27 @@ class HomeView extends GetView<HomeController> {
             children: [
               CustomSizedBox(),
               Image.asset(
-                "assets/images/Meal.png",
+                AppImages.meal,
               ),
               CustomSizedBox(),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: Constants.defaultPadding * 2),
                 child: NormalText(
-                  'Discover the best foods from over 1,000 resturants and fast delivery to your doorstep',
+                  Strings.landing_text,
                   isCentered: true,
                 ),
               ),
               CustomSizedBox(flex: 2),
               CustomTextButton(
-                  label: 'Login',
+                  label: Strings.login,
                   onPressed: () {
                     Get.to(() => LoginView());
                   }),
               CustomHeight(),
               CustomOutlinedButton(
-                defaultPadding: Constants.defaultPadding,
-                  label: 'Create an Account',
+                  defaultPadding: Constants.defaultPadding,
+                  label: Strings.create_an_account,
                   textColor: Theme.of(context).primaryColor,
                   onPressed: () {
                     Get.to(() => SignupView());
