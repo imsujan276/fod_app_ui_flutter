@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class OnboardingController extends GetxController {
-  //TODO: Implement OnboardingController
+class OnboardingController extends GetxController { 
 
   final count = 0.obs;
   late PageController pageController;
   @override
   void onInit() {
+    pageController = PageController();
     super.onInit();
   }
 

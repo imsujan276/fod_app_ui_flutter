@@ -47,22 +47,39 @@ class CustomOutlinedButton extends StatelessWidget {
     required this.onPressed,
     this.backgroundColor = AppColors.GREY,
     this.textColor = AppColors.BLACK,
+    this.defaultPadding = 0,
   });
 
   final VoidCallback onPressed;
   final String label;
   final Color backgroundColor;
   final Color textColor;
+  final double defaultPadding;
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      child: NormalText(label),
-      onPressed: onPressed,
-      style: OutlinedButton.styleFrom(
-        primary: textColor, // foreground
-        side: BorderSide(color: backgroundColor), // background
-        onSurface: AppColors.GREY, // disabled
+    return Container(
+      width: double.infinity,
+      height: 50.sp,
+      padding: EdgeInsets.symmetric(horizontal: defaultPadding),
+      child: OutlinedButton(
+        child: Text(
+          label,
+          style: TextStyle(color: Theme.of(context).primaryColor),
+        ),
+        onPressed: onPressed,
+        style: OutlinedButton.styleFrom(
+          primary: textColor, // foreground
+
+          side: BorderSide(
+            color: AppColors.PRIMARY_COLOR,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+          // background
+          onSurface: AppColors.PRIMARY_COLOR, // disabled
+        ),
       ),
     );
   }
@@ -85,29 +102,20 @@ class CustomTextButton extends StatelessWidget {
   final IconData icon;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onPressed,
       child: Container(
           height: 50.sp,
+          margin: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
           alignment: Alignment.center,
-          // padding: EdgeInsets.all(Constants.defaultPadding.sp),
           decoration: BoxDecoration(
               color: btnColor,
-              // gradient: LinearGradient(
-              //   colors: [
-              //     // Color.fromRGBO(255, 143, 158, 1),
-              //     // Colors.orange.withOpacity(.2)
-              //   ],
-              //   begin: Alignment.centerLeft,
-              //   end: Alignment.centerRight,
-              // ),
-
-              borderRadius: const BorderRadius.all(
-                Radius.circular(30.0),
+              borderRadius: BorderRadius.all(
+                Radius.circular(50.0.sp),
               ),
               boxShadow: [BoxShadow(color: borderColor, spreadRadius: 1)]),
-          width: double.infinity,
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (icon != Icons.clear)
@@ -117,11 +125,13 @@ class CustomTextButton extends StatelessWidget {
                   size: 18.sp,
                 ),
               SizedBox(width: 10.sp),
-              NormalText(
-                label,
-                color: textColor,
-                isBold: icon != Icons.clear ? false : true,
-                fontSize: icon != Icons.clear ? 16.sp : 18.sp,
+              Flexible(
+                child: NormalText(
+                  label,
+                  color: textColor,
+                  // isBold: icon != Icons.clear ? false : true,
+                  fontSize: icon != Icons.clear ? 16.sp : 18.sp,
+                ),
               ),
             ],
           )),

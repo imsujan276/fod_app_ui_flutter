@@ -16,7 +16,7 @@ class NormalText extends StatelessWidget {
     this.hasUnderline = false,
     this.isCentered = false,
     this.color = Colors.grey,
-    this.fontWeight = FontWeight.w600,
+    this.fontWeight = FontWeight.normal,
   });
 
   @override

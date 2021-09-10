@@ -1,19 +1,10 @@
-import 'dart:ui' as ui;
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
-// //Add this CustomPaint widget to the Widget Tree
-// CustomPaint(
-//     size: Size(WIDTH, (WIDTH*1.0213333333333334).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-//     painter: RPSCustomPainter(),
-// )
-
-//Copy this CustomPainter code to the Bottom of the File
 class RPSCustomPainter extends CustomPainter {
   final Color color;
-
-  RPSCustomPainter(this.color);
+  RPSCustomPainter(
+    this.color,
+  );
   @override
   void paint(Canvas canvas, Size size) {
     Path path_0 = Path();
@@ -76,7 +67,10 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
     paint_0_fill.color = // Color(0xfffc6011)
         color.withOpacity(1.0);
+    canvas.drawShadow(
+        path_0.shift(Offset(0, 10)), Colors.grey.withOpacity(.2), 3, true);
     canvas.drawPath(path_0, paint_0_fill);
+    // canvas.drawImage(image, Offset.zero, Paint());
   }
 
   @override

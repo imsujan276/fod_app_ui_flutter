@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'app/constants/constants.dart';
+import 'app/initialbindings.dart';
 import 'app/routes/app_pages.dart';
 import 'app/theme/themeService.dart';
 import 'app/theme/themes.dart';
@@ -34,11 +35,7 @@ class MyApp extends StatelessWidget {
                   initialRoute: AppPages.INITIAL,
                   getPages: AppPages.routes,
                   enableLog: true,
-                  // logWriterCallback: Logger.write,
-                  // initialBinding: InitialBinding(),
-                  // locale: TranslationService.locale,
-                  // fallbackLocale: TranslationService.fallbackLocale,
-                  // translations: TranslationService(),
+                  initialBinding: InitalBindings(),
                 );
               },
             );
@@ -48,9 +45,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-  // GetMaterialApp(
-  //       title: "Application",
-  //       initialRoute: AppPages.INITIAL,
-  //       getPages: AppPages.routes,
-  //     ),

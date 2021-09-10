@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 
 class FourController extends GetxController {
-  //TODO: Implement FourController
-
   final count = 0.obs;
   @override
   void onInit() {

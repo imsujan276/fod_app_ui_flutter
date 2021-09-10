@@ -14,6 +14,8 @@ dependencies:
   font_awesome_flutter: ^9.1.0
   get: 4.3.8
   get_storage: ^2.0.3
+  image: ^3.0.2
+  svg_icon: ^0.0.1
 
 dev_dependencies:
   flutter_test:
@@ -24,7 +26,22 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/
 
+  fonts:
+    - family: Metropolis
+      fonts:
+        - asset: fonts/metropolis/Metropolis-Regular.otf
+        - asset: fonts/metropolis/Metropolis-Bold.otf
+          weight : 700
+         
+        - asset: fonts/metropolis/Metropolis-Light.otf
+          style: italic
+    - family: Cabin
+      fonts:
+        - asset: fonts/cabin/Cabin-Regular.ttf
+        - asset: fonts/cabin/Cabin-Bold.ttf
+          weight: 700
 flutter_native_splash:
 
   # This package generates native code to customize Flutter's default white native splash screen

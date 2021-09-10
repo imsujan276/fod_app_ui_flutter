@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 
+Color grey = Colors.grey;
+Color black = Colors.black;
+Color grey70 = Colors.grey.shade700;
+Color grey8 = Colors.grey.shade800;
+Color grey30 = Colors.grey.shade300;
+Color grey10 = Colors.grey.shade100;
+Color grey2 = Colors.grey.shade200;
+Color grey60 = Colors.grey.shade600;
+
+const Color red = Colors.red;
+const Color blue = Colors.blue;
+
 class AppColors {
   static const String _color1 = '#FF725E';
 
