@@ -53,7 +53,7 @@ class CartView extends GetView<CartController> {
               height: 30,
             ),
             CustomTextButton(
-                label: Strings.checkout,//'Checkout',
+                label: Strings.checkout, //'Checkout',
                 onPressed: () {
                   Get.toNamed('\checkout');
                 }),
@@ -155,7 +155,7 @@ class TopWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
+      margin: EdgeInsets.symmetric(horizontal: Constants.defaultPadding / 2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -207,7 +207,10 @@ class TopWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  NormalText('Burger'),
+                  NormalText(
+                    'Burger',
+                    fontSize: 14.sp,
+                  ),
                   SizedBox(
                     width: 10,
                   ),
@@ -216,19 +219,29 @@ class TopWidget extends StatelessWidget {
                     size: 5.sp,
                     color: Theme.of(context).primaryColor,
                   ),
-                  NormalText(' Western Food'),
+                  NormalText(
+                    ' Western Food',
+                    fontSize: 14.sp,
+                  ),
                 ],
               ),
               SizedBox(
                 height: 3.sp,
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(
                     Icons.location_on,
                     color: Theme.of(context).primaryColor,
                   ),
-                  NormalText(" No 03, 4th Lane, New Work")
+                  Container(
+                    width: 200.sp,
+                    child: NormalText(
+                      " No 03, 4th Lane, New Work",
+                      fontSize: 14.sp,
+                    ),
+                  )
                 ],
               )
             ],

@@ -1,5 +1,3 @@
-import 'package:food_delivery/app/modules/landing/bindings/home_binding.dart';
-import 'package:food_delivery/app/modules/landing/views/landing_view.dart';
 import 'package:get/get.dart';
 
 import 'package:food_delivery/app/data/models/categoryItem.dart';
@@ -13,8 +11,12 @@ import 'package:food_delivery/app/modules/checkout/bindings/checkout_binding.dar
 import 'package:food_delivery/app/modules/checkout/views/checkout_view.dart';
 import 'package:food_delivery/app/modules/detail/bindings/detail_binding.dart';
 import 'package:food_delivery/app/modules/detail/views/detail_view.dart';
+import 'package:food_delivery/app/modules/homepage/bindings/homepage_binding.dart';
+import 'package:food_delivery/app/modules/homepage/views/homepage_view.dart';
 import 'package:food_delivery/app/modules/inbox/bindings/inbox_binding.dart';
 import 'package:food_delivery/app/modules/inbox/views/inbox_view.dart';
+import 'package:food_delivery/app/modules/landing/bindings/home_binding.dart';
+import 'package:food_delivery/app/modules/landing/views/landing_view.dart';
 import 'package:food_delivery/app/modules/login/bindings/three_binding.dart';
 import 'package:food_delivery/app/modules/login/views/login.dart';
 import 'package:food_delivery/app/modules/menu/bindings/menu_binding.dart';
@@ -144,6 +146,11 @@ class AppPages {
       name: _Paths.CHECKOUT,
       page: () => CheckoutView(),
       binding: CheckoutBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOMEPAGE,
+      page: () => HomepageView(),
+      binding: HomepageBinding(),
     ),
   ];
 }

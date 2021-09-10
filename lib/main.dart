@@ -35,10 +35,7 @@ class MyApp extends StatelessWidget {
                   initialRoute: AppPages.INITIAL,
                   getPages: AppPages.routes,
                   enableLog: true,
-
-                 
                   initialBinding: InitalBindings(),
-              
                 );
               },
             );
@@ -48,4 +45,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
- 

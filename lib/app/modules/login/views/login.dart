@@ -24,81 +24,83 @@ class LoginView extends GetView<ThreeController> {
     return Scaffold(
         body: ResponsiveLayout(
       // tablet: Container(),
-      mobile: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CustomHeight(),
-            LargeText(
-              Strings.login,
-            ),
-            CustomHeight(),
-            NormalText(
-              Strings.add_details + Strings.login.toLowerCase(),
-              fontWeight: FontWeight.w600,
-            ),
-            CustomHeight(),
-            CustomTextField(
-              padding: Constants.defaultPadding,
-              label: Strings.email_username,
-            ),
-            CustomHeight(),
-            CustomTextField(
-              padding: Constants.defaultPadding,
-              label: Strings.password,
-            ),
-            CustomHeight(),
-            CustomTextButton(
-                label: Strings.login,
-                textColor: Theme.of(context).scaffoldBackgroundColor,
-                onPressed: () {
-                  Get.toNamed('/onboarding');
-                }),
-            CustomHeight(),
-            GestureDetector(
-                onTap: () {
-                  Get.to(() => ResetPasswordView());
-                },
-                child: NormalText(Strings.forgot_password)),
-            CustomHeight(),
-            NormalText(Strings.login_with),
-            CustomHeight(),
-            CustomTextButton(
-              icon: FontAwesomeIcons.facebookF,
-              label: Strings.facebook,
-              onPressed: () {},
-              btnColor: blue,
-            ),
-            CustomHeight(),
-            CustomTextButton(
-              icon: FontAwesomeIcons.googlePlusG,
-              label: Strings.login_with_google,
-              onPressed: () {},
-              btnColor: red,
-            ),
-            CustomHeight(),
-            RichText(
-                text: TextSpan(
-                    text: Strings.dont_have,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(color: Colors.grey),
-                    children: [
-                  WidgetSpan(
-                      child: InkWell(
-                    onTap: () => Get.off(() => SignupView()),
-                    child: Text(
-                      "  ${Strings.signup}",
+      mobile: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CustomHeight(),
+              LargeText(
+                Strings.login,
+              ),
+              CustomHeight(),
+              NormalText(
+                Strings.add_details + Strings.login.toLowerCase(),
+                fontWeight: FontWeight.w600,
+              ),
+              CustomHeight(),
+              CustomTextField(
+                padding: Constants.defaultPadding,
+                label: Strings.email_username,
+              ),
+              CustomHeight(),
+              CustomTextField(
+                padding: Constants.defaultPadding,
+                label: Strings.password,
+              ),
+              CustomHeight(),
+              CustomTextButton(
+                  label: Strings.login,
+                  textColor: Theme.of(context).scaffoldBackgroundColor,
+                  onPressed: () {
+                    Get.toNamed('/onboarding');
+                  }),
+              CustomHeight(),
+              GestureDetector(
+                  onTap: () {
+                    Get.to(() => ResetPasswordView());
+                  },
+                  child: NormalText(Strings.forgot_password)),
+              CustomHeight(),
+              NormalText(Strings.login_with),
+              CustomHeight(),
+              CustomTextButton(
+                icon: FontAwesomeIcons.facebookF,
+                label: Strings.facebook,
+                onPressed: () {},
+                btnColor: blue,
+              ),
+              CustomHeight(),
+              CustomTextButton(
+                icon: FontAwesomeIcons.googlePlusG,
+                label: Strings.login_with_google,
+                onPressed: () {},
+                btnColor: red,
+              ),
+              CustomHeight(),
+              RichText(
+                  text: TextSpan(
+                      text: Strings.dont_have,
                       style: Theme.of(context)
                           .textTheme
                           .bodyText1!
-                          .copyWith(color: Theme.of(context).primaryColor),
-                    ),
-                  ))
-                ])),
-            CustomHeight(),
-          ],
+                          .copyWith(color: Colors.grey),
+                      children: [
+                    WidgetSpan(
+                        child: InkWell(
+                      onTap: () => Get.off(() => SignupView()),
+                      child: Text(
+                        "  ${Strings.signup}",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(color: Theme.of(context).primaryColor),
+                      ),
+                    ))
+                  ])),
+              CustomHeight(),
+            ],
+          ),
         ),
       ),
     ));

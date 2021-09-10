@@ -23,6 +23,7 @@ abstract class Routes {
   static const INBOX = _Paths.INBOX;
   static const CART = _Paths.CART;
   static const CHECKOUT = _Paths.CHECKOUT;
+  static const HOMEPAGE = _Paths.HOMEPAGE;
 }
 
 abstract class _Paths {
@@ -45,4 +46,5 @@ abstract class _Paths {
   static const INBOX = '/inbox';
   static const CART = '/cart';
   static const CHECKOUT = '/checkout';
+  static const HOMEPAGE = '/homepage';
 }
