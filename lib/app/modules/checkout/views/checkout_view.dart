@@ -21,11 +21,7 @@ class CheckoutView extends GetView<CheckoutController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // backgroundColor: Colors.grey.withOpacity(.1),
-        // appBar: AppBar(
-        //   title: Text('CheckoutView'),
-        //   centerTitle: true,
-        // ),
+ 
         body: SafeArea(
       child: SingleChildScrollView(
         child: Column(

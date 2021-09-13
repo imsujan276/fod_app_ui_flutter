@@ -136,8 +136,8 @@ class PaymentCard extends StatelessWidget {
               ),
               Spacer(),
               Container(
-                height: 30.sp,
-                width: 100.sp,
+                height: 40.sp,
+                width: 120.sp,
                 child: CustomOutlinedButton(
                   label: 'Delete Card',
                   onPressed: () {},

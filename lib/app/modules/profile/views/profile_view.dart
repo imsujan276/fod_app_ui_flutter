@@ -18,25 +18,20 @@ import '../controllers/profile_controller.dart';
 class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
-      child: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buildAppBar(title: 'Profile', isBold: false),
-              ProfileHeader(),
-              CustomHeight(),
-              ProfileBody(),
-              CustomHeight(
-                height: 30,
-              ),
-            ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildAppBar(title: 'Profile', isBold: false),
+          ProfileHeader(),
+          CustomHeight(),
+          ProfileBody(),
+          CustomHeight(
+            height: 40.sp,
           ),
-        ),
+        ],
       ),
-    ));
+    );
   }
 }
 
@@ -60,7 +55,10 @@ class ProfileBody extends StatelessWidget {
         CustomTextButton(
           label: 'Save',
           onPressed: () {},
-        )
+        ),
+        CustomHeight(
+          height: 50.sp,
+        ),
       ],
     );
   }
@@ -79,8 +77,8 @@ class CustomProfileMenu extends StatelessWidget {
     return Container(
         margin: EdgeInsets.symmetric(
             horizontal: Constants.defaultPadding,
-            vertical: Constants.defaultmargin),
-        padding: EdgeInsets.symmetric(horizontal: 40.sp, vertical: 10.sp),
+            vertical: Constants.defaultmargin / 2),
+        padding: EdgeInsets.symmetric(horizontal: 40.sp, vertical: 6.sp),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50.sp),
             color: grey.withOpacity(.15)),

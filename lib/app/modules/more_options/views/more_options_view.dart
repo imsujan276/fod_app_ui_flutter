@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_delivery/app/constants/constants.dart'; 
+import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/modules/paymentdetail/views/paymentdetail_view.dart';
 import 'package:food_delivery/app/routes/app_pages.dart';
@@ -36,25 +36,18 @@ List<MoreOptionsModel> moreOptions = [
 class MoreOptionsView extends GetView<MoreOptionsController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // appBar: AppBar(
-        //   title: Text('MoreOptionsView'),
-        //   centerTitle: true,
-        // ),
-        body: SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            buildAppBar(
-              title: 'More',
-              isBold: false,
-            ),
-            CustomHeight(),
-            BodyPart(),
-          ],
-        ),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          buildAppBar(
+            title: 'More',
+            isBold: false,
+          ),
+          CustomHeight(),
+          BodyPart(),
+        ],
       ),
-    ));
+    );
   }
 }
 

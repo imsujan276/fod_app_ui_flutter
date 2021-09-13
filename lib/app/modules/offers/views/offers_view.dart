@@ -12,40 +12,33 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class OffersView extends GetView<OffersController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // appBar: AppBar(
-        //   title: Text('OffersView'),
-        //   centerTitle: true,
-        // ),
-        body: SafeArea(
-      child: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.symmetric(vertical: 10.sp),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buildAppBar(title: 'Latest Offers', isBold: false),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                child: NormalText('Find discount Offers special'),
+    return SingleChildScrollView(
+      child: Container(
+        // margin: EdgeInsets.symmetric(vertical: 10.sp),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            buildAppBar(title: 'Latest Offers', isBold: false),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18.0),
+              child: NormalText('Find discount Offers special'),
+            ),
+            CustomHeight(),
+            Container(
+              width: 200.sp,
+              child: CustomTextButton(
+                label: 'Check offers',
+                onPressed: () {},
               ),
-              CustomHeight(),
-              Container(
-                width: 200.sp,
-                child: CustomTextButton(
-                  label: 'Check offers',
-                  onPressed: () {},
-                ),
-              ),
-              CustomHeight(
-                height: 10,
-              ),
-              latestOffers(context),
-            ],
-          ),
+            ),
+            CustomHeight(
+              height: 10,
+            ),
+            latestOffers(context),
+          ],
         ),
       ),
-    ));
+    );
   }
 
   Widget latestOffers(BuildContext context) {

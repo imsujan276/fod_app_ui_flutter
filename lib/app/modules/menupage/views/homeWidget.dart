@@ -26,6 +26,7 @@ class HomeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       mobile: ListView(
+        padding: EdgeInsets.zero,
         children: [
           buildAppBar(title: Strings.good_morning + ' Akila!'),
           CustomHeight(height: 6),
@@ -255,7 +256,7 @@ class HomeWidget extends StatelessWidget {
                           color: grey70,
                           isCentered: true,
                           fontSize: Constants.defaultFontSize,
-                          // isBold: true,
+                          isBold: true,
                           // fontWeight: FontWeight.w600,
                         ),
                       ),

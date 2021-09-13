@@ -26,19 +26,21 @@ class HomeView extends GetView<HomeController> {
         Expanded(
           flex: 1,
           child: Stack(
-            fit: StackFit.expand,
+            // fit: StackFit.expand,
             children: [
               ///custom paint part
               Container(
-                height: 400.h,
+                height: context.isLandscape ? 600.h : 400.h,
                 width: 1.sw,
                 child: CustomPaint(
-                  size: Size(double.infinity, 350.h.toDouble()),
-                  painter: RPSCustomPainter(
-                    AppColors.PRIMARY_COLOR,
-                  ),
-                  child: Image.asset(AppImages.background,fit: BoxFit.fitWidth,)
-                ),
+                    size: Size(double.infinity, 350.h.toDouble()),
+                    painter: RPSCustomPainter(
+                      AppColors.PRIMARY_COLOR,
+                    ),
+                    child: Image.asset(
+                      AppImages.background,
+                      fit: BoxFit.fill,
+                    )),
               ),
               // Container(
               //   height: 400.h,
@@ -69,14 +71,17 @@ class HomeView extends GetView<HomeController> {
               //     width: 1.sw,
               //     child: Image.asset(AppImages.topImage, fit: BoxFit.fitWidth),
               //   ),
-              Container(
-                  height: 50.h,
-                  alignment: !context.isPortrait
-                      ? Alignment.center
-                      : Alignment.bottomCenter,
-                  child: Image.asset(
-                    AppImages.logo,
-                  )),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                    height: 100.h,
+                    alignment: !context.isPortrait
+                        ? Alignment.center
+                        : Alignment.bottomCenter,
+                    child: Image.asset(
+                      AppImages.logo,
+                    )),
+              ),
             ],
           ),
         ),
