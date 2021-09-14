@@ -14,11 +14,9 @@ import '../controllers/detail_controller.dart';
 class DetailView extends GetView<DetailController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      body: SafeArea(
-        child: ResponsiveLayout(
-            mobile: SingleChildScrollView(
+    return ResponsiveLayout(
+      mobile: SingleChildScrollView(
+        child: SafeArea(
           child: Stack(
             children: [
               Container(
@@ -33,9 +31,7 @@ class DetailView extends GetView<DetailController> {
                           image: AssetImage(
                             AppImages.tandori,
                           ),
-                          fit: BoxFit.fitWidth))
-             
-                  ),
+                          fit: BoxFit.fitWidth))),
               Container(
                 margin: EdgeInsets.only(top: 250.h),
                 width: double.infinity,
@@ -65,11 +61,10 @@ class DetailView extends GetView<DetailController> {
                 top: 230.h,
                 right: 12.sp,
                 child: AddToFavourite(),
-             
               ),
             ],
           ),
-        )),
+        ),
       ),
     );
   }
@@ -170,7 +165,7 @@ class AddToCart extends StatelessWidget {
             ),
           ),
           Positioned(
-              left: .8.sw,  
+              left: .8.sw,
               top: 60.sp,
               child: Container(
                 height: 40.h,
@@ -189,7 +184,6 @@ class AddToCart extends StatelessWidget {
                       ),
                     ],
                     borderRadius: BorderRadius.circular(30)),
-                
               ))
         ]),
       ),

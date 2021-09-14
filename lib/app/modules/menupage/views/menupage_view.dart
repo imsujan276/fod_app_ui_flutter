@@ -49,9 +49,12 @@ Widget bodyWidet(context) {
   final controller = Get.find<MenupageController>();
   return Obx(() => controller.currentIndex == 5
       ? Container()
-      : IndexedStack(
-          index: controller.currentIndex,
-          children: _children,
+      : Container(
+          padding: EdgeInsets.symmetric(vertical: 20.sp),
+          child: IndexedStack(
+            index: controller.currentIndex,
+            children: _children,
+          ),
         ));
 }
 
@@ -94,8 +97,9 @@ Widget bottomNav() {
                       name: 'Menu',
                       isSelected: controller.currentIndex == 1 ? true : false,
                       ontap: () {
-                        Get.back();
+                        // Get.back();
                         controller.updateCurrentIndex(1);
+
                         Get.to(() => MenupageView());
                       }),
                   Spacer(
@@ -107,8 +111,8 @@ Widget bottomNav() {
                       isSelected: controller.currentIndex == 2 ? true : false,
                       ontap: () {
                         Get.back();
-                        controller.updateCurrentIndex(2);
                         Get.to(() => MenupageView());
+                        controller.updateCurrentIndex(2);
                       }),
                   Spacer(
                     flex: 4,

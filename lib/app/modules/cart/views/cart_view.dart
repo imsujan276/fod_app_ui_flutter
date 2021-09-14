@@ -155,7 +155,7 @@ class TopWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: Constants.defaultPadding / 2),
+      margin: EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -170,81 +170,83 @@ class TopWidget extends StatelessWidget {
           SizedBox(
             width: 10.sp,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              LargeText(
-                "King Burgers",
-                fontSize: Constants.defaultFontSize,
-                isBold: true,
-                color: grey70,
-              ),
-              SizedBox(
-                height: 3.sp,
-              ),
-              RichText(
-                  text: TextSpan(
-                      style: TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.w600),
-                      children: [
-                    WidgetSpan(
-                      child: Icon(
-                        Icons.star,
-                        color: Theme.of(context).primaryColor,
-                        size: 20.sp,
-                      ),
-                    ),
-                    TextSpan(
-                        text: '4.9 ',
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                LargeText(
+                  "King Burgers",
+                  fontSize: Constants.defaultFontSize,
+                  isBold: true,
+                  color: grey70,
+                ),
+                SizedBox(
+                  height: 3.sp,
+                ),
+                RichText(
+                    text: TextSpan(
                         style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.w600)),
-                    TextSpan(text: '(124 ratings)'),
-                  ])),
-              SizedBox(
-                height: 3.sp,
-              ),
-              Row(
-                children: [
-                  NormalText(
-                    'Burger',
-                    fontSize: 14.sp,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon(
-                    Icons.circle,
-                    size: 5.sp,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  NormalText(
-                    ' Western Food',
-                    fontSize: 14.sp,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 3.sp,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Icon(
-                    Icons.location_on,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  Container(
-                    width: 200.sp,
-                    child: NormalText(
-                      " No 03, 4th Lane, New Work",
+                            color: Colors.grey, fontWeight: FontWeight.w600),
+                        children: [
+                      WidgetSpan(
+                        child: Icon(
+                          Icons.star,
+                          color: Theme.of(context).primaryColor,
+                          size: 20.sp,
+                        ),
+                      ),
+                      TextSpan(
+                          text: '4.9 ',
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.w600)),
+                      TextSpan(text: '(124 ratings)'),
+                    ])),
+                SizedBox(
+                  height: 3.sp,
+                ),
+                Row(
+                  children: [
+                    NormalText(
+                      'Burger',
                       fontSize: 14.sp,
                     ),
-                  )
-                ],
-              )
-            ],
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
+                      Icons.circle,
+                      size: 5.sp,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    NormalText(
+                      ' Western Food',
+                      fontSize: 14.sp,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 3.sp,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.location_on,
+                      size: 14.sp,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    Expanded(
+                      child: NormalText(
+                        " No 03, 4th Lane, New Work",
+                        fontSize: 14.sp,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           )
         ],
       ),

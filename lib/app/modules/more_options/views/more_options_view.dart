@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_delivery/app/constants/constants.dart'; 
+import 'package:food_delivery/app/constants/constants.dart';
 import 'package:food_delivery/app/modules/menupage/views/homeWidget.dart';
 import 'package:food_delivery/app/modules/paymentdetail/views/paymentdetail_view.dart';
 import 'package:food_delivery/app/routes/app_pages.dart';
@@ -36,25 +36,18 @@ List<MoreOptionsModel> moreOptions = [
 class MoreOptionsView extends GetView<MoreOptionsController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // appBar: AppBar(
-        //   title: Text('MoreOptionsView'),
-        //   centerTitle: true,
-        // ),
-        body: SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            buildAppBar(
-              title: 'More',
-              isBold: false,
-            ),
-            CustomHeight(),
-            BodyPart(),
-          ],
-        ),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          buildAppBar(
+            title: 'More',
+            isBold: false,
+          ),
+          CustomHeight(),
+          BodyPart(),
+        ],
       ),
-    ));
+    );
   }
 }
 
@@ -117,7 +110,7 @@ class BodyItem extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20.sp),
               margin: EdgeInsets.only(right: 20.sp),
-              height: 80.h,
+              height: 70.h,
               child: Row(
                 children: [
                   CircleAvatar(
@@ -151,7 +144,7 @@ class BodyItem extends StatelessWidget {
             ),
             Positioned(
                 right: 0,
-                bottom: 25.h,
+                bottom: 20.h,
                 child: CircleAvatar(
                   backgroundColor: Colors.grey.shade100,
                   radius: 16.sp,

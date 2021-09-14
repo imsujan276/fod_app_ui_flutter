@@ -16,30 +16,26 @@ import '../controllers/menu_controller.dart';
 class MenuView extends GetView<MenuController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ResponsiveLayout(
-        mobile: SafeArea(
-          child: Container(
-            // height: 1.sh,
-            color: AppColors.GREY50,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  buildAppBar(
-                    title: 'Menu',
-                  ),
-                  CustomHeight(),
-                  CustomTextField(
-                    padding: Constants.defaultPadding,
-                    label: 'Search food',
-                    prefixIcon: Icons.search,
-                  ),
-                  CustomHeight(),
-                  CustomHeight(),
-                  MenuWidgets()
-                ],
+    return ResponsiveLayout(
+      mobile: Container(
+        // height: 1.sh,
+        color: AppColors.GREY50,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              buildAppBar(
+                title: 'Menu',
               ),
-            ),
+              CustomHeight(),
+              CustomTextField(
+                padding: Constants.defaultPadding,
+                label: 'Search food',
+                prefixIcon: Icons.search,
+              ),
+              CustomHeight(),
+              CustomHeight(),
+              MenuWidgets()
+            ],
           ),
         ),
       ),
@@ -205,7 +201,7 @@ class DesignContainer extends StatelessWidget {
           bottomRight: Radius.circular(30.sp)),
       child: Container(
         width: 70.sp,
-        height: 450.sp,
+        height: 400.sp,
         color: Theme.of(context).primaryColor,
       ),
     );
