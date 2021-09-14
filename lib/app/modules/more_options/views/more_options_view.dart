@@ -110,7 +110,7 @@ class BodyItem extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20.sp),
               margin: EdgeInsets.only(right: 20.sp),
-              height: 80.h,
+              height: 70.h,
               child: Row(
                 children: [
                   CircleAvatar(
@@ -144,7 +144,7 @@ class BodyItem extends StatelessWidget {
             ),
             Positioned(
                 right: 0,
-                bottom: 25.h,
+                bottom: 20.h,
                 child: CircleAvatar(
                   backgroundColor: Colors.grey.shade100,
                   radius: 16.sp,

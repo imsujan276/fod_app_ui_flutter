@@ -31,16 +31,16 @@ flutter:
   fonts:
     - family: Metropolis
       fonts:
-        - asset: fonts/metropolis/Metropolis-Regular.otf
-        - asset: fonts/metropolis/Metropolis-Bold.otf
+        - asset: assets/fonts/metropolis/Metropolis-Regular.otf
+        - asset: assets/fonts/metropolis/Metropolis-Bold.otf
           weight : 700
          
-        - asset: fonts/metropolis/Metropolis-Light.otf
+        - asset: assets/fonts/metropolis/Metropolis-Light.otf
           style: italic
     - family: Cabin
       fonts:
-        - asset: fonts/cabin/Cabin-Regular.ttf
-        - asset: fonts/cabin/Cabin-Bold.ttf
+        - asset: assets/fonts/cabin/Cabin-Regular.ttf
+        - asset: assets/fonts/cabin/Cabin-Bold.ttf
           weight: 700
 flutter_native_splash:
 

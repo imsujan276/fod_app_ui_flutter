@@ -110,9 +110,9 @@ Widget bottomNav() {
                       name: 'Offers',
                       isSelected: controller.currentIndex == 2 ? true : false,
                       ontap: () {
-                        // Get.back();
-                        controller.updateCurrentIndex(2);
+                        Get.back();
                         Get.to(() => MenupageView());
+                        controller.updateCurrentIndex(2);
                       }),
                   Spacer(
                     flex: 4,
